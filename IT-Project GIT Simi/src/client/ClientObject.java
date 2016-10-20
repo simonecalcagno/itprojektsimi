@@ -1,0 +1,55 @@
+package client;
+
+import java.io.*;
+import java.net.Socket;
+
+public class ClientObject {
+	
+	private static Game game = new Game("Simone");
+
+	public static Game clientServerCommunication(Game game) {
+		
+		try{
+			Socket client = new Socket ("localhost", 1234);
+			
+			ObjectOutputStream out = new ObjectOutputStream (client.getOutputStream());
+			
+			ObjectInputStream in = new ObjectInputStream (client.getInputStream());
+			
+			System.out.println("Server kontaktiert: " +client.getInetAddress());
+			
+			
+			
+			out.writeObject(game);
+			
+			
+			System.out.println("Objekt name " + game.getPlayer());
+			System.out.println("Objekt vom Client versendet!");
+			
+			Game game1 = (Game)in.readObject();
+			
+			System.out.println("Objekt vom Server erhalten und eingelesen");
+			System.out.println(game1.toSTring());
+			
+			return game1;
+			
+		}catch (Exception e){
+			System.out.println("\nFehler: "+e);
+		}
+		return game;
+		
+		
+
+	}
+	
+	public static String sendGameObject(){
+		
+		
+		Game gameClient = clientServerCommunication(game);
+		
+		return gameClient.getPlayer();
+		
+		
+	}
+
+}
