@@ -5,6 +5,8 @@ import java.net.Socket;
 import java.net.ServerSocket;
 
 
+// receives objects from client, replace their names and send it back to client
+// needs ObjectOutputStream and ObjectInputStream to send and read Objects
 public class ServerObject {
 	
 	private static int port = 1234;
@@ -30,7 +32,7 @@ public class ServerObject {
 			System.out.println("Objekt beim Server angekommen");
 			
 			
-			game2.setPlayer("di vater");
+			game2.setPlayer("dini muetter");
 			
 			out.writeObject(game2);
 			

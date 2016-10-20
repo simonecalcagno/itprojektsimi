@@ -25,6 +25,8 @@ public class GameController implements Initializable {
 	
 	
 	
+	//setting the String given from Server through method sendGAmeObject from Client to Server
+	// in the TextField
 	
 	public void sendToServer(){
 	

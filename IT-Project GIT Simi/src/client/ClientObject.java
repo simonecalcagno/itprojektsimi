@@ -5,8 +5,11 @@ import java.net.Socket;
 
 public class ClientObject {
 	
+	
 	private static Game game = new Game("Simone");
 
+	
+	// connect client with Server
 	public static Game clientServerCommunication(Game game) {
 		
 		try{
@@ -42,6 +45,7 @@ public class ClientObject {
 
 	}
 	
+	// send Game Object to Server and returns Player Name to Controller
 	public static String sendGameObject(){
 		
 		
