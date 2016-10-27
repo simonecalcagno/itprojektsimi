@@ -37,7 +37,7 @@ public class ServerObject {
 			out.writeObject(game2);
 			
 			System.out.println("Objekt vom Server zurückgeschickt! ");
-			System.out.println(game2);
+			System.out.println(game2.toSTring());
 			
 		}catch (Exception e){
 			System.out.println("Fehler: "+e);
