@@ -1,13 +1,14 @@
-package game;
+package client;
 
 import java.net.*;
 import java.io.*;
 
 public class Client {
 	
+	
 	public static void main(String[] args) throws Exception{
 			System.out.println("Connecting...");
-			Socket socket = new Socket ("localhost", Server.PORT);
+			Socket socket = new Socket ("localhost", server.Server.PORT);
 			System.out.println("Connection successful.");
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 			ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());

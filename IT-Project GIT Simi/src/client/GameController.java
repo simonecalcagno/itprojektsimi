@@ -4,6 +4,7 @@ package client;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import server.Server;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -30,8 +31,18 @@ public class GameController implements Initializable {
 	
 	public void sendToServer(){
 	
-		tf1.setText(ClientObject.sendGameObject());
+		tf1.setText(CopyOfClient.sendGameObject());
 				
-	}	
+	}
+	
+	//run the server by click "start" button
+	
+	public void startServer(){
+		try {
+			new Server().runServer();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

@@ -1,19 +1,24 @@
 package client;
 
-import java.awt.TextField;
 import java.io.Serializable;
 
 public class Game implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 3899829800627466047L;
 	private String player;
+	private int age;
 	
-	public Game(String player){
+	public Game(String player, int age){
 		this.player = player;
+		this.age = age;
+	}
+	
+	
+	public void setAge(int age){
+		this.age = age;
+	}
+	
+	public int getAge(){
+		return this.age;
 	}
 	
 	public void setPlayer(String player){
@@ -25,7 +30,7 @@ public class Game implements Serializable {
 	}
 	
 	public String toSTring(){
-		return "Player name: "+player;
+		return "Player name: "+getPlayer()+"\nAge: "+String.valueOf(getAge());
 	}
 	
 

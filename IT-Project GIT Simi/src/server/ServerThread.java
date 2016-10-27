@@ -1,4 +1,4 @@
-package game;
+package server;
 
 import java.io.*;
 import java.net.*;
@@ -15,12 +15,12 @@ public class ServerThread extends Thread {
 	
 	
 	public void run(){
-		Game game = null;
+		client.Game game = null;
 
 		try{	
 			ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-			while ((game = (Game)objectInputStream.readObject()) != null){
+			while ((game = (client.Game)objectInputStream.readObject()) != null){
 			System.out.println(game.toSTring());
 			
 			doSomething(game);
@@ -39,7 +39,7 @@ public class ServerThread extends Thread {
 		
 	}
 
-	private void doSomething (Game game){
+	private void doSomething (client.Game game){
 		game.setPlayer("Alen");
 		game.setAge(25);
 	}
