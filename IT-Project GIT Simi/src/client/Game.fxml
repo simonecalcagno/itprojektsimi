@@ -9,6 +9,5 @@
    <children>
       <Button fx:id="b1" layoutX="279.0" layoutY="188.0" mnemonicParsing="false" onAction="#sendToServer" text="Send" />
       <TextField fx:id="tf1" layoutX="226.0" layoutY="147.0" />
-      <Button fx:id="bstart" layoutX="208.0" layoutY="188.0" mnemonicParsing="false" onAction="#startServer" text="Start" />
    </children>
 </Pane>

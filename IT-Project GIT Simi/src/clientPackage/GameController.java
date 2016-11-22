@@ -155,6 +155,7 @@ public class GameController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		tile1.setImage(Tile.blue1);
+		
 
 	}
 	

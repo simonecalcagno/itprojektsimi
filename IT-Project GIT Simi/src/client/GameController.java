@@ -13,10 +13,10 @@ import javafx.scene.control.TextField;
 public class GameController implements Initializable {
 	
 	@FXML
-	Button b1;
+	static Button b1;
 	
 	@FXML
-	TextField tf1;
+	static TextField tf1;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -31,18 +31,13 @@ public class GameController implements Initializable {
 	
 	public void sendToServer(){
 	
-		tf1.setText(CopyOfClient.sendGameObject());
-				
-	}
-	
-	//run the server by click "start" button
-	
-	public void startServer(){
 		try {
-			new Server().runServer();
+			CopyOfClient.clientServerCommunication();
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+				
 	}
 
 }

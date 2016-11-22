@@ -14,9 +14,8 @@ public class Tile implements Serializable {
 	private String color;
 	private int points;
 	
-	static File file1 = new File("src/blue_2.jpg");
 	
-	public static Image blue1 = new Image(file1.toURI().toString());
+	public static Image blue1 = new Image("file:blue_1.jpg");
 	
 	
 	public Tile(String color, int points){
