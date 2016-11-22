@@ -28,6 +28,7 @@ public class ServerThread extends Thread {
 			
 			
 			
+			
 			System.out.println("Object has been changed and sent.");
 			
 			}
