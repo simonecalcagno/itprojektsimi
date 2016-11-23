@@ -150,11 +150,11 @@ public class GameController implements Initializable {
 	@FXML
 	ImageView moveCard5;
 	
-	
+	public Image blue1 = new Image(getClass().getResourceAsStream("/resource/blue_1.jpg"));
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		tile1.setImage(Tile.blue1);
+		tile1.setImage(blue1);
 		
 
 	}
