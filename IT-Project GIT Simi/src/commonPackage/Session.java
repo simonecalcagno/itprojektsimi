@@ -18,12 +18,12 @@ public class Session {
 		
 		//Player, der Session erstellt hat, wird an erster Stelle
 		//zum Player-Array hinzugefügt
-		for(Player p:Player.registeredPlayers){
+/*		for(Player p:Player.registeredPlayers){
 			if(p.getPCName().equals(System.getProperty("user.name"))){
 				players[0] = p;
 			}
 		}
-	}
+*/}
 
 	public void startGame(Player[] players){
 		Game game = new Game(players);
