@@ -3,7 +3,9 @@ package commonPackage;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
+import clientPackage.GameController;
 import javafx.scene.image.Image;
 
 public class Tile implements Serializable {
@@ -67,6 +69,7 @@ public class Tile implements Serializable {
 	private Image yellow7 = new Image(getClass().getResourceAsStream("/resource/yellow_7.jpg"));
 	
 	private ArrayList<Tile> tiles = new ArrayList<Tile>();
+	public static ArrayList<Image> startTiles = new ArrayList<Image>();
 	
 	public Tile(String color, int points){
 		this.color = color;
@@ -81,8 +84,60 @@ public class Tile implements Serializable {
 		return this.color;
 	}
 	
-	public Image getTile(){
-		return yellow7;
+	public static void setStartTiles(){
+		startTiles.add(blue1);
+		startTiles.add(blue2);
+		startTiles.add(blue3);
+		startTiles.add(blue4);
+		startTiles.add(blue5);
+		startTiles.add(blue6);
+		startTiles.add(blue7);
+		startTiles.add(brown1);
+		startTiles.add(brown2);
+		startTiles.add(brown3);
+		startTiles.add(brown4);
+		startTiles.add(brown5);
+		startTiles.add(brown6);
+		startTiles.add(brown7);
+		startTiles.add(green1);
+		startTiles.add(green2);
+		startTiles.add(green3);
+		startTiles.add(green4);
+		startTiles.add(green5);
+		startTiles.add(green6);
+		startTiles.add(green7);
+		startTiles.add(grey1);
+		startTiles.add(grey2);
+		startTiles.add(grey3);
+		startTiles.add(grey4);
+		startTiles.add(grey5);
+		startTiles.add(grey6);
+		startTiles.add(grey7);
+		startTiles.add(pink1);
+		startTiles.add(pink2);
+		startTiles.add(pink3);
+		startTiles.add(pink4);
+		startTiles.add(pink5);
+		startTiles.add(pink6);
+		startTiles.add(pink7);
+		startTiles.add(white1);
+		startTiles.add(white2);
+		startTiles.add(white3);
+		startTiles.add(white4);
+		startTiles.add(white5);
+		startTiles.add(white6);
+		startTiles.add(white7);
+		startTiles.add(yellow1);
+		startTiles.add(yellow2);
+		startTiles.add(yellow3);
+		startTiles.add(yellow4);
+		startTiles.add(yellow5);
+		startTiles.add(yellow6);
+		startTiles.add(yellow7);
+		
+		Random rand  = new Random();
+		
+		GameController.tile1.setImage(startTiles.get(0));
 	}
 	
 }

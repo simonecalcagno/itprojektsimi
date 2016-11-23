@@ -34,6 +34,7 @@ public class GameController implements Initializable {
 	@FXML
 	Button lobbyButton;
 	@FXML
+	public static
 	ImageView tile1;
 	@FXML
 	ImageView tile2;
@@ -154,7 +155,7 @@ public class GameController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		tile1.setImage(blue1);
+		Tile.setStartTiles();
 		
 
 	}
