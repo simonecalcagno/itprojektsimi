@@ -20,10 +20,6 @@ public class Tile implements Serializable {
 	
 	
 	
-	private ArrayList<Tile> tiles = new ArrayList<Tile>();
-	private static ArrayList<Image> startTiles = new ArrayList<Image>();
-	
-	
 	public Tile(String color, int points){
 		this.color = color;
 		this.points = points;

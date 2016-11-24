@@ -256,8 +256,7 @@
       <StackPane fx:id="movementCards" layoutX="756.0" layoutY="444.0" prefHeight="120.0" prefWidth="70.0" style="-fx-background-color: red;" />
       <HBox fx:id="startBox" layoutX="71.0" layoutY="79.0" prefHeight="80.0" prefWidth="160.0" style="-fx-background-color: orange;" />
       <HBox fx:id="endBox" layoutX="912.0" layoutY="292.0" prefHeight="80.0" prefWidth="160.0" style="-fx-background-color: brown;" />
-      <Button fx:id="finishButton" layoutX="571.0" layoutY="619.0" mnemonicParsing="false" onAction="#finishTurn" prefHeight="38.0" prefWidth="170.0" text="Spielzug beenden" />
-      <Button fx:id="leaveGameButton" layoutX="385.0" layoutY="619.0" mnemonicParsing="false" onAction="#leaveGame" prefHeight="38.0" prefWidth="170.0" text="Spiel aufgeben" />
+      <Button fx:id="finishButton" layoutX="480.0" layoutY="619.0" mnemonicParsing="false" onAction="#finishTurn" prefHeight="38.0" prefWidth="170.0" text="Spielzug beenden" />
       <Button fx:id="lobbyButton" layoutX="534.0" layoutY="666.0" mnemonicParsing="false" onAction="#backToLobby" text="zur Lobby" />
    </children>
 </Pane>

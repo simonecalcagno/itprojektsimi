@@ -32,8 +32,6 @@ public class GameController implements Initializable {
 	@FXML
 	HBox moveCardsBox;
 	@FXML
-	Button leaveGameButton;	
-	@FXML
 	Button lobbyButton;
 	@FXML
 	ImageView tile1;
@@ -260,23 +258,25 @@ public class GameController implements Initializable {
 	
 	}
 	
-	
+	//
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		ArrayList<Image> startBoard = setStartTiles();
+		ArrayList<Image> startBoard = new ArrayList<Image>(setStartTiles());
+		
+		initTileArray();
 		
 		int count = 0;
 		
-		for(int i = 0; i < startBoard.size(); i++){
-		
+		for(int i = 0; i <startBoard.size(); i++){
 			tileImages[count].setImage(startBoard.get(i));
 			count++;
 		}
+	
+	}
 		
 
-	}
 	
 	public ArrayList<Image> setTiles(){
 		
@@ -337,65 +337,73 @@ public class GameController implements Initializable {
 	}
 	
 	public ArrayList<Image> setStartTiles(){
-	ArrayList<Image> tileBoard = setTiles();
-	initTileArray();
 	
-/*	Random rand = new Random();
-	int casualValue = rand.nextInt(51);
-	int casualValue1 = rand.nextInt(51);
-*/	
-	tileBoard.set(0, blue1);
-	tileBoard.set(1, yellow2);
-	tileBoard.set(2, pink7);
-	tileBoard.set(3, white7);
-	tileBoard.set(4, grey5);
-	tileBoard.set(5, grey1);
-	tileBoard.set(6, blue3);
-	tileBoard.set(7, green2);
-	tileBoard.set(8, brown6);
-	tileBoard.set(9, pink3);
-	tileBoard.set(10, yellow4);
-	tileBoard.set(11, white5);
-	tileBoard.set(12, grey3);
-	tileBoard.set(13, brown5);
-	tileBoard.set(14, white2);
-	tileBoard.set(15, green1);
-	tileBoard.set(16, yellow7);
-	tileBoard.set(17, grey2);
-	tileBoard.set(18, blue5);
-	tileBoard.set(19, green3);
-	tileBoard.set(20, green7);
-	tileBoard.set(21, brown2);
-	tileBoard.set(22, pink4);
-	tileBoard.set(23, yellow6);
-	tileBoard.set(24, pink5);
-	tileBoard.set(26, green4);
-	tileBoard.set(27, blue6);
-	tileBoard.set(28, brown4);
-	tileBoard.set(29, green5);
-	tileBoard.set(30, grey7);
-	tileBoard.set(31, white4);
-	tileBoard.set(32, white1);
-	tileBoard.set(33, pink1);
-	tileBoard.set(34, yellow3);
-	tileBoard.set(35, white3);
-	tileBoard.set(36, blue2);
-	tileBoard.set(37, green6);
-	tileBoard.set(38, blue7);
-	tileBoard.set(39, grey4);
-	tileBoard.set(40, pink6);
-	tileBoard.set(41, yellow1);
-	tileBoard.set(42, brown7);
-	tileBoard.set(43, brown3);
-	tileBoard.set(44, blue4);
-	tileBoard.set(45, grey6);
-	tileBoard.set(46, pink2);
-	tileBoard.set(47, white6);
-	tileBoard.set(48, yellow5);
-	tileBoard.set(49, brown1);
+	ArrayList<Image> tileBoard = new ArrayList<Image>(setTiles());
+	ArrayList<Image> proformaList = new ArrayList<Image>(setTiles());
 	
+	Random rand = new Random();
+	int count = 50;
+	
+	
+	for (int i=0; i<tileBoard.size(); i++){
+		int x = rand.nextInt(count);
+		tileBoard.set(i, proformaList.get(x));
+		proformaList.remove(x);
+		count--;
+	}
+	
+//	tileBoard.set(0, blue1);
+//	tileBoard.set(1, yellow2);
+//	tileBoard.set(2, pink7);
+//	tileBoard.set(3, white7);
+//	tileBoard.set(4, grey5);
+//	tileBoard.set(5, grey1);
+//	tileBoard.set(6, blue3);
+//	tileBoard.set(7, green2);
+//	tileBoard.set(8, brown6);
+//	tileBoard.set(9, pink3);
+//	tileBoard.set(10, yellow4);
+//	tileBoard.set(11, white5);
+//	tileBoard.set(12, grey3);
+//	tileBoard.set(13, brown5);
+//	tileBoard.set(14, white2);
+//	tileBoard.set(15, green1);
+//	tileBoard.set(16, yellow7);
+//	tileBoard.set(17, grey2);
+//	tileBoard.set(18, blue5);
+//	tileBoard.set(19, green3);
+//	tileBoard.set(20, green7);
+//	tileBoard.set(21, brown2);
+//	tileBoard.set(22, pink4);
+//	tileBoard.set(23, yellow6);
+//	tileBoard.set(24, pink5);
+//	tileBoard.set(26, green4);
+//	tileBoard.set(27, blue6);
+//	tileBoard.set(28, brown4);
+//	tileBoard.set(29, green5);
+//	tileBoard.set(30, grey7);
+//	tileBoard.set(31, white4);
+//	tileBoard.set(32, white1);
+//	tileBoard.set(33, pink1);
+//	tileBoard.set(34, yellow3);
+//	tileBoard.set(35, white3);
+//	tileBoard.set(36, blue2);
+//	tileBoard.set(37, green6);
+//	tileBoard.set(38, blue7);
+//	tileBoard.set(39, grey4);
+//	tileBoard.set(40, pink6);
+//	tileBoard.set(41, yellow1);
+//	tileBoard.set(42, brown7);
+//	tileBoard.set(43, brown3);
+//	tileBoard.set(44, blue4);
+//	tileBoard.set(45, grey6);
+//	tileBoard.set(46, pink2);
+//	tileBoard.set(47, white6);
+//	tileBoard.set(48, yellow5);
+//	tileBoard.set(49, brown1);
 	
 	return tileBoard;
+	
 	}
 
 
