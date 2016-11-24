@@ -8,7 +8,7 @@ import java.util.Random;
 import clientPackage.GameController;
 import javafx.scene.image.Image;
 
-public class Tile implements Serializable {
+public class Tile2 implements Serializable {
 	
 	/**
 	 * 
@@ -24,7 +24,7 @@ public class Tile implements Serializable {
 	
 	
 	
-	public Tile(Image img, int points){
+	public Tile2(Image img, int points){
 		this.img = img;
 		this.points = points;
 	}
@@ -36,8 +36,6 @@ public class Tile implements Serializable {
 	public Image getImage(){
 		return this.img;
 	}
-	
-	
 	
 	
 	
