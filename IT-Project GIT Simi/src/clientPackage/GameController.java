@@ -21,6 +21,8 @@ import javafx.scene.layout.*;
 public class GameController implements Initializable {
 
 
+	// Elemente vom GUI definieren
+	
 	@FXML
 	HBox startBox;
 	@FXML
@@ -143,7 +145,9 @@ public class GameController implements Initializable {
 	ImageView moveCard4;
 	@FXML
 	ImageView moveCard5;
-
+	
+	//Bilder welche im Ordner resource abgelget sind instanziert als Image
+	
 	private Image blue1 = new Image(getClass().getResourceAsStream("/resource/blue_1.jpg"));
 	private Image blue2 = new Image(getClass().getResourceAsStream("/resource/blue_2.jpg"));
 	private Image blue3 = new Image(getClass().getResourceAsStream("/resource/blue_3.jpg"));
@@ -195,10 +199,21 @@ public class GameController implements Initializable {
 	private Image yellow7 = new Image(getClass().getResourceAsStream("/resource/yellow_7.jpg"));
 	private Image water = new Image(getClass().getResourceAsStream("/resource/bg_popup.png"));
 
+	
+	//Instanzvariablen ArrayListe welche alle Tile Objekte beinhaltet
+	//und ImageView Array welche alle ImageView mit ID beinhaltet
+	
 	private ArrayList<Tile> startBoard;
 	private ImageView[] tileImages;
 	Tile Water = new Tile(water, 0);
 
+	
+	//initialize Methode instanziert eine startBoard Liste mit Tile Objekte welche zufällig
+	//in der Liste gesetzt wurden.
+	// mit initTileArray wird die Instanzvariable tileImages initialisiert um ein Array mit allen 
+	//ImageViews zu haben
+	// danach wird jedes ImageView mit einem Bild aus der startBoard Liste gesetzt.
+	//somit haben wir ein visuelles GameBoard
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -214,6 +229,9 @@ public class GameController implements Initializable {
 		}
 
 	}
+	
+	//initialisiert die Instanzvariable tileImages um ein Array mit allen ImageViews zu haben
+	//damit wir darauf zugreiffen können um ein Bild zu setzen
 	private void initTileArray(){	
 
 		tileImages = new ImageView[49];
@@ -271,6 +289,8 @@ public class GameController implements Initializable {
 
 	}	
 
+	//setStartTiles wird gebraucht um eine ArrayList zu haben welche zufällig mit Tile Images
+	//gefüllt wurde
 	public ArrayList<Tile> setStartTiles(){
 
 		ArrayList<Tile> tileBoard = new ArrayList<Tile>(setTiles());
@@ -295,6 +315,9 @@ public class GameController implements Initializable {
 
 
 
+	//instanziert neue Tile Objekte und addet die Objekte einer Liste zu.
+	//diese Liste ist nicht zufällig verteilt 
+	//haben wir erstellt damit wir eine Liste mit allen Tile Objekte haben
 	public ArrayList<Tile> setTiles(){
 
 		ArrayList<Tile> startGameBoard = new ArrayList<Tile>();
@@ -419,6 +442,10 @@ public class GameController implements Initializable {
 
 	}
 	
+	
+	//wird ausgelöst wenn der Spieler sein Avatar auf eine entsprechendes Tile setzen will
+	//die Methode ersetzt das vorherige Tile mit "Wasser" und gibt die Punktzahlt des Tiles zurück
+	//um die Punktzahl danach dem Score vom Spieler zu summieren
 	public void collectTile(MouseEvent event){
 		int points;
 		String selectetTile = handle(event);
@@ -441,6 +468,8 @@ public class GameController implements Initializable {
 		
 	}
 	
+	//gibt die ID des geklickten Tiles zurück
+	//damit wir das Tile identifizieren können
 	public String handle(MouseEvent event){
 		
 		ImageView tile = (ImageView) event.getSource(); ;
