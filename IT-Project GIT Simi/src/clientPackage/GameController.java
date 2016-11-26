@@ -8,17 +8,20 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import commonPackage.Card;
 import commonPackage.Tile;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
-public class GameController implements Initializable {
+public class GameController implements Initializable, Cloneable {
 
 
 	// Elemente vom GUI definieren
@@ -198,6 +201,16 @@ public class GameController implements Initializable {
 	private Image yellow6 = new Image(getClass().getResourceAsStream("/resource/yellow_6.jpg"));
 	private Image yellow7 = new Image(getClass().getResourceAsStream("/resource/yellow_7.jpg"));
 	private Image water = new Image(getClass().getResourceAsStream("/resource/bg_popup.png"));
+	
+	private Image moveCardBlue = new Image(getClass().getResourceAsStream("/resource/card_Blue.jpg"));
+	private Image moveCardBrown = new Image(getClass().getResourceAsStream("/resource/card_Brown.jpg"));
+	private Image moveCardGreen = new Image(getClass().getResourceAsStream("/resource/card_Green.jpg"));
+	private Image moveCardGrey = new Image(getClass().getResourceAsStream("/resource/card_Grey.jpg"));
+	private Image moveCardPink = new Image(getClass().getResourceAsStream("/resource/card_Pink.jpg"));
+	private Image moveCardWhite = new Image(getClass().getResourceAsStream("/resource/card_White.jpg"));
+	private Image moveCardYellow = new Image(getClass().getResourceAsStream("/resource/card_Yellow.jpg"));
+	
+	
 
 	
 	//Instanzvariablen ArrayListe welche alle Tile Objekte beinhaltet
@@ -205,7 +218,11 @@ public class GameController implements Initializable {
 	
 	private ArrayList<Tile> startBoard;
 	private ImageView[] tileImages;
+	private ImageView[] moveImages;
+	private ArrayList<Card> cards;
+	private ArrayList<Card> playerCards;
 	Tile Water = new Tile(water, 0);
+	
 
 	
 	//initialize Methode instanziert eine startBoard Liste mit Tile Objekte welche zufällig
@@ -221,12 +238,32 @@ public class GameController implements Initializable {
 
 		initTileArray();
 
-		int count = 0;
+		int countTile = 0;
 
 		for(int i = 0; i < startBoard.size(); i++){
-			tileImages[count].setImage(startBoard.get(i).getImage());
-			count++;
+			tileImages[countTile].setImage(startBoard.get(i).getImage());
+			countTile++;
 		}
+		
+		cards = new ArrayList<Card>(setStartMoveCards());
+		//proforma, playerCards muss beim Player Objekt instanziert werden
+		//hier nur zu test Zwecken
+		playerCards = new ArrayList<Card>();
+		for(int i = 0; i < 5; i++){
+			playerCards.add(cards.get(i));
+		}
+		
+		initMoveCardArray();
+		int countMoveCard = 0;
+		for(int i = 0; i < moveImages.length; i++){
+			moveImages[countMoveCard].setImage(cards.get(i).getImage());
+			countMoveCard++;
+		}
+		
+		System.out.println(cards);
+		
+		
+		
 
 	}
 	
@@ -448,7 +485,7 @@ public class GameController implements Initializable {
 	//um die Punktzahl danach dem Score vom Spieler zu summieren
 	public void collectTile(MouseEvent event){
 		int points;
-		String selectetTile = handle(event);
+		String selectetTile = handleTile(event);
 		
 		String subString = selectetTile.substring(4);
 		int tilePosition = Integer.parseInt(subString);
@@ -470,12 +507,128 @@ public class GameController implements Initializable {
 	
 	//gibt die ID des geklickten Tiles zurück
 	//damit wir das Tile identifizieren können
-	public String handle(MouseEvent event){
+	public String handleTile(MouseEvent event){
 		
 		ImageView tile = (ImageView) event.getSource(); ;
 		String selectetTileId = tile.getId();
 		
 		return selectetTileId;
 	}
+	
+	
+	
+	//gibt eine Liste zurück mit 105 Bewegungskarten jeweils 7 Arten à 15 Karten
+	//die Karten sind nicht zufällig verteilt in der Liste
+	public ArrayList<Card> initCardArray(){
+		ArrayList<Card> cards = new ArrayList<Card>();
+		ArrayList<Card> tempCards = cardArrayToUse();
+		
+		int count = 0;
+		
+		
+		for(int i = 0; i < tempCards.size(); i++){
+			for(int f = 0; f <15; f++){
+				cards.add((Card) tempCards.get(count));
+			}
+			count++;
+		}
+		return cards;
+		
+	}
+	
+	//instanziert Bewegeungskarten vom Typ Card und setzt diese in eine Liste damit wir auf alle 7 Bewegungskarten zugreifen können
+	public ArrayList<Card> cardArrayToUse(){
+		Card blue = new Card("blue", moveCardBlue);
+		Card brown = new Card("brown", moveCardBrown);
+		Card green = new Card("green", moveCardGreen);
+		Card grey = new Card("grey", moveCardGrey);
+		Card pink = new Card("pink", moveCardPink);
+		Card white = new Card("white", moveCardWhite);
+		Card yellow = new Card("yellow", moveCardYellow);
+		
+		ArrayList<Card> tempCards = new ArrayList<Card>();
+		tempCards.add(blue);
+		tempCards.add(brown);
+		tempCards.add(green);
+		tempCards.add(grey);
+		tempCards.add(pink);
+		tempCards.add(white);
+		tempCards.add(yellow);
+		
+	return tempCards;
+	}
+	
+	
+	//gibt uns eine Liste zurück mit allen Bewegungskarten die zufällig verteilt sind
+	//total haben wir 105 Karten, jeweils 7 verschiedene Arten à 15 Karten
+	public ArrayList<Card> setStartMoveCards(){
+		
+		ArrayList<Card> startMoveCards = new ArrayList<Card>(initCardArray());
+		ArrayList<Card> proformaCards = new ArrayList<Card>(initCardArray());
+		
+		Random rand = new Random();
+		int count = 105;
+		
+		for (int i = 0; i < startMoveCards.size(); i++){
+			int x = rand.nextInt(count);
+			startMoveCards.set(i, proformaCards.get(x));
+			proformaCards.remove(x);
+			count--;
+		}
+		
+		return startMoveCards;
+	}
+	
+	//setzt ImageViews in einem Array damit wir auf diese zugreiffen können
+	public void initMoveCardArray(){
+		moveImages = new ImageView[5];
+		
+		moveImages[0] = moveCard1;
+		moveImages[1] = moveCard2;
+		moveImages[2] = moveCard3;
+		moveImages[3] = moveCard4;
+		moveImages[4] = moveCard5;
+		
+	}
+	
+	public void showPossibleMove(MouseEvent event){
+		String selectetMoveCard = handleMoveCard(event);
+		
+		
+		
+		String subString = selectetMoveCard.substring(8);
+		int moveCardPosition = Integer.parseInt(subString);
+		
+		Card selectMoveCard = playerCards.get(moveCardPosition-1);
+		
+		
+		System.out.println(selectMoveCard.getColor());
+		
+		
+		
+	}
+	
+public String handleMoveCard(MouseEvent event){
+		
+		ImageView moveCard = (ImageView) event.getSource(); ;
+		String selectetMoveCard = moveCard.getId();
+		InnerShadow iShadow = new InnerShadow();
+		iShadow.setChoke(0.45);
+		iShadow.setColor(Color.web("#00FCFC"));
+		iShadow.setHeight(29.9);
+		iShadow.setWidth(29.9);
+		iShadow.setRadius(14.45);
+		moveCard.setEffect(iShadow);
+		
+		
+		
+		
+		return selectetMoveCard;
+	}
 
+public void handleMouseExit(MouseEvent event){
+	ImageView moveCard = (ImageView) event.getSource(); ;
+
+	moveCard.setEffect(null);
+}
 }
