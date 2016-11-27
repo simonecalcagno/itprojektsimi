@@ -19,14 +19,16 @@ public class Tile implements Serializable {
 	
 	private Image img;
 	private int points;
+	private String color;
 	
 	
 	
 	
 	
-	public Tile(Image img, int points){
+	public Tile(Image img, int points, String color){
 		this.img = img;
 		this.points = points;
+		this.color = color;
 	}
 	
 	public int getPoints(){
@@ -35,6 +37,10 @@ public class Tile implements Serializable {
 	
 	public Image getImage(){
 		return this.img;
+	}
+	
+	public String getColor(){
+		return this.color;
 	}
 	
 	

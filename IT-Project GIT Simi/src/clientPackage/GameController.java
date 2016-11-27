@@ -25,7 +25,7 @@ public class GameController implements Initializable, Cloneable {
 
 
 	// Elemente vom GUI definieren
-	
+
 	@FXML
 	HBox startBox;
 	@FXML
@@ -148,9 +148,9 @@ public class GameController implements Initializable, Cloneable {
 	ImageView moveCard4;
 	@FXML
 	ImageView moveCard5;
-	
+
 	//Bilder welche im Ordner resource abgelget sind instanziert als Image
-	
+
 	private Image blue1 = new Image(getClass().getResourceAsStream("/resource/blue_1.jpg"));
 	private Image blue2 = new Image(getClass().getResourceAsStream("/resource/blue_2.jpg"));
 	private Image blue3 = new Image(getClass().getResourceAsStream("/resource/blue_3.jpg"));
@@ -201,7 +201,7 @@ public class GameController implements Initializable, Cloneable {
 	private Image yellow6 = new Image(getClass().getResourceAsStream("/resource/yellow_6.jpg"));
 	private Image yellow7 = new Image(getClass().getResourceAsStream("/resource/yellow_7.jpg"));
 	private Image water = new Image(getClass().getResourceAsStream("/resource/bg_popup.png"));
-	
+
 	private Image moveCardBlue = new Image(getClass().getResourceAsStream("/resource/card_Blue.jpg"));
 	private Image moveCardBrown = new Image(getClass().getResourceAsStream("/resource/card_Brown.jpg"));
 	private Image moveCardGreen = new Image(getClass().getResourceAsStream("/resource/card_Green.jpg"));
@@ -209,22 +209,23 @@ public class GameController implements Initializable, Cloneable {
 	private Image moveCardPink = new Image(getClass().getResourceAsStream("/resource/card_Pink.jpg"));
 	private Image moveCardWhite = new Image(getClass().getResourceAsStream("/resource/card_White.jpg"));
 	private Image moveCardYellow = new Image(getClass().getResourceAsStream("/resource/card_Yellow.jpg"));
-	
-	
 
-	
+
+
+
 	//Instanzvariablen ArrayListe welche alle Tile Objekte beinhaltet
 	//und ImageView Array welche alle ImageView mit ID beinhaltet
-	
+
 	private ArrayList<Tile> startBoard;
 	private ImageView[] tileImages;
 	private ImageView[] moveImages;
 	private ArrayList<Card> cards;
 	private ArrayList<Card> playerCards;
-	Tile Water = new Tile(water, 0);
-	
+	static InnerShadow tileShadow;
+	Tile Water = new Tile(water, 0, "water");
 
-	
+
+
 	//initialize Methode instanziert eine startBoard Liste mit Tile Objekte welche zufällig
 	//in der Liste gesetzt wurden.
 	// mit initTileArray wird die Instanzvariable tileImages initialisiert um ein Array mit allen 
@@ -244,7 +245,7 @@ public class GameController implements Initializable, Cloneable {
 			tileImages[countTile].setImage(startBoard.get(i).getImage());
 			countTile++;
 		}
-		
+
 		cards = new ArrayList<Card>(setStartMoveCards());
 		//proforma, playerCards muss beim Player Objekt instanziert werden
 		//hier nur zu test Zwecken
@@ -252,21 +253,21 @@ public class GameController implements Initializable, Cloneable {
 		for(int i = 0; i < 5; i++){
 			playerCards.add(cards.get(i));
 		}
-		
+
 		initMoveCardArray();
 		int countMoveCard = 0;
 		for(int i = 0; i < moveImages.length; i++){
 			moveImages[countMoveCard].setImage(cards.get(i).getImage());
 			countMoveCard++;
 		}
-		
+
 		System.out.println(cards);
-		
-		
-		
+
+
+
 
 	}
-	
+
 	//initialisiert die Instanzvariable tileImages um ein Array mit allen ImageViews zu haben
 	//damit wir darauf zugreiffen können um ein Bild zu setzen
 	private void initTileArray(){	
@@ -359,56 +360,56 @@ public class GameController implements Initializable, Cloneable {
 
 		ArrayList<Tile> startGameBoard = new ArrayList<Tile>();
 
-		Tile Blue1 = new Tile(blue1, 1);
-		Tile Blue2 = new Tile(blue2, 2);
-		Tile Blue3 = new Tile(blue3, 3);
-		Tile Blue4 = new Tile(blue4, 4);
-		Tile Blue5 = new Tile(blue5, 5);
-		Tile Blue6 = new Tile(blue6, 6);
-		Tile Blue7 = new Tile(blue7, 7);
-		Tile Brown1 = new Tile(brown1, 1);
-		Tile Brown2 = new Tile(brown2, 2);
-		Tile Brown3 = new Tile(brown3, 3);
-		Tile Brown4 = new Tile(brown4, 4);
-		Tile Brown5 = new Tile(brown5, 5);
-		Tile Brown6 = new Tile(brown6, 6);
-		Tile Brown7 = new Tile(brown7, 7);
-		Tile Grey1 = new Tile(grey1, 1);
-		Tile Grey2 = new Tile(grey2, 2);
-		Tile Grey3 = new Tile(grey3, 3);
-		Tile Grey4 = new Tile(grey4, 4);
-		Tile Grey5 = new Tile(grey5, 5);
-		Tile Grey6 = new Tile(grey6, 6);
-		Tile Grey7 = new Tile(grey7, 7);
-		Tile Green1 = new Tile(green1, 1);
-		Tile Green2 = new Tile(green2, 2);
-		Tile Green3 = new Tile(green3, 3);
-		Tile Green4 = new Tile(green4, 4);
-		Tile Green5 = new Tile(green5, 5);
-		Tile Green6 = new Tile(green6, 6);
-		Tile Green7 = new Tile(green7, 7);
-		Tile Pink1 = new Tile(pink1, 1);
-		Tile Pink2 = new Tile(pink2, 2);
-		Tile Pink3 = new Tile(pink3, 3);
-		Tile Pink4 = new Tile(pink4, 4);
-		Tile Pink5 = new Tile(pink5, 5);
-		Tile Pink6 = new Tile(pink6, 6);
-		Tile Pink7 = new Tile(pink7, 7);
-		Tile White1 = new Tile(white1, 1);
-		Tile White2 = new Tile(white2, 2);
-		Tile White3 = new Tile(white3, 3);
-		Tile White4 = new Tile(white4, 4);
-		Tile White5 = new Tile(white5, 5);
-		Tile White6 = new Tile(white6, 6);
-		Tile White7 = new Tile(white7, 7);
-		Tile Yellow1 = new Tile(yellow1, 1);
-		Tile Yellow2 = new Tile(yellow2, 2);
-		Tile Yellow3 = new Tile(yellow3, 3);
-		Tile Yellow4 = new Tile(yellow4, 4);
-		Tile Yellow5 = new Tile(yellow5, 5);
-		Tile Yellow6 = new Tile(yellow6, 6);
-		Tile Yellow7 = new Tile(yellow7, 7);
-		
+		Tile Blue1 = new Tile(blue1, 1, "blue");
+		Tile Blue2 = new Tile(blue2, 2, "blue");
+		Tile Blue3 = new Tile(blue3, 3, "blue");
+		Tile Blue4 = new Tile(blue4, 4, "blue");
+		Tile Blue5 = new Tile(blue5, 5, "blue");
+		Tile Blue6 = new Tile(blue6, 6, "blue");
+		Tile Blue7 = new Tile(blue7, 7, "blue");
+		Tile Brown1 = new Tile(brown1, 1, "brown");
+		Tile Brown2 = new Tile(brown2, 2, "brown");
+		Tile Brown3 = new Tile(brown3, 3, "brown");
+		Tile Brown4 = new Tile(brown4, 4, "brown");
+		Tile Brown5 = new Tile(brown5, 5, "brown");
+		Tile Brown6 = new Tile(brown6, 6, "brown");
+		Tile Brown7 = new Tile(brown7, 7, "brown");
+		Tile Grey1 = new Tile(grey1, 1, "grey");
+		Tile Grey2 = new Tile(grey2, 2, "grey");
+		Tile Grey3 = new Tile(grey3, 3, "grey");
+		Tile Grey4 = new Tile(grey4, 4, "grey");
+		Tile Grey5 = new Tile(grey5, 5, "grey");
+		Tile Grey6 = new Tile(grey6, 6, "grey");
+		Tile Grey7 = new Tile(grey7, 7, "grey");
+		Tile Green1 = new Tile(green1, 1, "green");
+		Tile Green2 = new Tile(green2, 2, "green");
+		Tile Green3 = new Tile(green3, 3, "green");
+		Tile Green4 = new Tile(green4, 4, "green");
+		Tile Green5 = new Tile(green5, 5, "green");
+		Tile Green6 = new Tile(green6, 6, "green");
+		Tile Green7 = new Tile(green7, 7, "green");
+		Tile Pink1 = new Tile(pink1, 1, "pink");
+		Tile Pink2 = new Tile(pink2, 2, "pink");
+		Tile Pink3 = new Tile(pink3, 3, "pink");
+		Tile Pink4 = new Tile(pink4, 4, "pink");
+		Tile Pink5 = new Tile(pink5, 5, "pink");
+		Tile Pink6 = new Tile(pink6, 6, "pink");
+		Tile Pink7 = new Tile(pink7, 7, "pink");
+		Tile White1 = new Tile(white1, 1, "white");
+		Tile White2 = new Tile(white2, 2, "white");
+		Tile White3 = new Tile(white3, 3, "white");
+		Tile White4 = new Tile(white4, 4, "white");
+		Tile White5 = new Tile(white5, 5, "white");
+		Tile White6 = new Tile(white6, 6, "white");
+		Tile White7 = new Tile(white7, 7, "white");
+		Tile Yellow1 = new Tile(yellow1, 1, "yellow");
+		Tile Yellow2 = new Tile(yellow2, 2, "yellow");
+		Tile Yellow3 = new Tile(yellow3, 3, "yellow");
+		Tile Yellow4 = new Tile(yellow4, 4, "yellow");
+		Tile Yellow5 = new Tile(yellow5, 5, "yellow");
+		Tile Yellow6 = new Tile(yellow6, 6, "yellow");
+		Tile Yellow7 = new Tile(yellow7, 7, "yellow");
+
 
 
 		startGameBoard.add(Blue1);
@@ -478,54 +479,66 @@ public class GameController implements Initializable, Cloneable {
 	public void backToLobby(){
 
 	}
-	
-	
+
+
 	//wird ausgelöst wenn der Spieler sein Avatar auf eine entsprechendes Tile setzen will
 	//die Methode ersetzt das vorherige Tile mit "Wasser" und gibt die Punktzahlt des Tiles zurück
 	//um die Punktzahl danach dem Score vom Spieler zu summieren
 	public void collectTile(MouseEvent event){
 		int points;
+		int countPosition = 2;
+
 		String selectetTile = handleTile(event);
-		
+
 		String subString = selectetTile.substring(4);
 		int tilePosition = Integer.parseInt(subString);
-		
-		Tile selectTile = startBoard.get(tilePosition-2);
-		
+
+
+		Tile selectTile = startBoard.get(tilePosition-countPosition);
 		points = selectTile.getPoints();
-		
-		//addToScore Methode muss hier geschrieben werden um die Punktzahl aufs Konto vom Spieler zu übertragen
-		
-		startBoard.set(tilePosition-2, Water);
-		tileImages[tilePosition-2].setImage(startBoard.get(tilePosition-2).getImage());
-		
-		
+
+		if(points > 0){
+			//addToScore Methode muss hier geschrieben werden um die Punktzahl aufs Konto vom Spieler zu übertragen
+
+			startBoard.set(tilePosition-countPosition, Water);
+			tileImages[tilePosition-countPosition].setImage(startBoard.get(tilePosition-countPosition).getImage());
+		}else{
+			do{
+				countPosition++;
+				Tile selectTile1 = startBoard.get(tilePosition-countPosition);
+				points = selectTile1.getPoints();
+			}while(points == 0);
+			startBoard.set(tilePosition-countPosition, Water);
+			tileImages[tilePosition-countPosition].setImage(startBoard.get(tilePosition-countPosition).getImage());
+		}
+
+
 		System.out.println(points);
 		System.out.println(selectetTile);
-		
+
 	}
-	
+
 	//gibt die ID des geklickten Tiles zurück
 	//damit wir das Tile identifizieren können
 	public String handleTile(MouseEvent event){
-		
+
 		ImageView tile = (ImageView) event.getSource(); ;
 		String selectetTileId = tile.getId();
-		
+
 		return selectetTileId;
 	}
-	
-	
-	
+
+
+
 	//gibt eine Liste zurück mit 105 Bewegungskarten jeweils 7 Arten à 15 Karten
 	//die Karten sind nicht zufällig verteilt in der Liste
 	public ArrayList<Card> initCardArray(){
 		ArrayList<Card> cards = new ArrayList<Card>();
 		ArrayList<Card> tempCards = cardArrayToUse();
-		
+
 		int count = 0;
-		
-		
+
+
 		for(int i = 0; i < tempCards.size(); i++){
 			for(int f = 0; f <15; f++){
 				cards.add((Card) tempCards.get(count));
@@ -533,9 +546,9 @@ public class GameController implements Initializable, Cloneable {
 			count++;
 		}
 		return cards;
-		
+
 	}
-	
+
 	//instanziert Bewegeungskarten vom Typ Card und setzt diese in eine Liste damit wir auf alle 7 Bewegungskarten zugreifen können
 	public ArrayList<Card> cardArrayToUse(){
 		Card blue = new Card("blue", moveCardBlue);
@@ -545,7 +558,7 @@ public class GameController implements Initializable, Cloneable {
 		Card pink = new Card("pink", moveCardPink);
 		Card white = new Card("white", moveCardWhite);
 		Card yellow = new Card("yellow", moveCardYellow);
-		
+
 		ArrayList<Card> tempCards = new ArrayList<Card>();
 		tempCards.add(blue);
 		tempCards.add(brown);
@@ -554,81 +567,117 @@ public class GameController implements Initializable, Cloneable {
 		tempCards.add(pink);
 		tempCards.add(white);
 		tempCards.add(yellow);
-		
-	return tempCards;
+
+		return tempCards;
 	}
-	
-	
+
+
 	//gibt uns eine Liste zurück mit allen Bewegungskarten die zufällig verteilt sind
 	//total haben wir 105 Karten, jeweils 7 verschiedene Arten à 15 Karten
 	public ArrayList<Card> setStartMoveCards(){
-		
+
 		ArrayList<Card> startMoveCards = new ArrayList<Card>(initCardArray());
 		ArrayList<Card> proformaCards = new ArrayList<Card>(initCardArray());
-		
+
 		Random rand = new Random();
 		int count = 105;
-		
+
 		for (int i = 0; i < startMoveCards.size(); i++){
 			int x = rand.nextInt(count);
 			startMoveCards.set(i, proformaCards.get(x));
 			proformaCards.remove(x);
 			count--;
 		}
-		
+
 		return startMoveCards;
 	}
-	
+
 	//setzt ImageViews in einem Array damit wir auf diese zugreiffen können
 	public void initMoveCardArray(){
 		moveImages = new ImageView[5];
-		
+
 		moveImages[0] = moveCard1;
 		moveImages[1] = moveCard2;
 		moveImages[2] = moveCard3;
 		moveImages[3] = moveCard4;
 		moveImages[4] = moveCard5;
-		
+
 	}
-	
+
+	//zeigt im Player seine mögliche Spielzüge welche er machen kann
+	//wenn sich die mouse über eine Bewegungskarte bewegt, dann wird diese highlightet sowie die 
+	//passenden Tiles werden auch gehighlightet
 	public void showPossibleMove(MouseEvent event){
 		String selectetMoveCard = handleMoveCard(event);
 		
-		
-		
 		String subString = selectetMoveCard.substring(8);
 		int moveCardPosition = Integer.parseInt(subString);
-		
+
 		Card selectMoveCard = playerCards.get(moveCardPosition-1);
+
+		ArrayList<Tile> possibleTiles = new ArrayList<Tile>();
+		ArrayList<ImageView> possibleTilesArray = new ArrayList<ImageView>();
+		
+		for(int i = 0; i < startBoard.size(); i++){
+			if(startBoard.get(i).getColor().equals(selectMoveCard.getColor())){
+				possibleTiles.add(startBoard.get(i));
+				possibleTilesArray.add(tileImages[i]);
+			}
+		}
+		
+		showPossibleTiles(possibleTilesArray);
+		
 		
 		
 		System.out.println(selectMoveCard.getColor());
 		
-		
-		
+
 	}
-	
-public String handleMoveCard(MouseEvent event){
+
+	//handle MouseEvent Methode welche die ausgewählte Bewegungskarte Highlightet
+	public String handleMoveCard(MouseEvent event){
+
 		
-		ImageView moveCard = (ImageView) event.getSource(); ;
+		ImageView moveCard = (ImageView) event.getSource();
 		String selectetMoveCard = moveCard.getId();
 		InnerShadow iShadow = new InnerShadow();
 		iShadow.setChoke(0.45);
-		iShadow.setColor(Color.web("#00FCFC"));
+		iShadow.setColor(Color.web("F7FF00"));
 		iShadow.setHeight(29.9);
 		iShadow.setWidth(29.9);
 		iShadow.setRadius(14.45);
 		moveCard.setEffect(iShadow);
 		
-		
-		
-		
 		return selectetMoveCard;
 	}
 
-public void handleMouseExit(MouseEvent event){
-	ImageView moveCard = (ImageView) event.getSource(); ;
-
-	moveCard.setEffect(null);
-}
+	//handle MouseEvent Methode welche den Highlight effekt wieder zurücksetzt sobald die Bewegungskarte
+	//mit der Mouse verlassen wird
+	public void handleMouseExit(MouseEvent event){
+		ImageView moveCard = (ImageView) event.getSource(); ;
+		moveCard.setEffect(null);
+		tileShadow.setChoke(0);
+		tileShadow.setColor(null);
+		tileShadow.setHeight(0);
+		tileShadow.setWidth(0);
+		tileShadow.setRadius(0);
+		
+	}
+	
+	//effekt welcher bei den Tiles ausgelöst wird wenn eine Bewegungskarte ausgewählt wird
+	public static void showPossibleTiles(ArrayList<ImageView> possibleTileArray){
+		
+		
+		tileShadow = new InnerShadow();
+		tileShadow.setChoke(0.5);
+		tileShadow.setColor(Color.web("F7FF00"));
+		tileShadow.setHeight(50);
+		tileShadow.setWidth(50);
+		tileShadow.setRadius(10);
+		
+		for(int i = 0 ; i < possibleTileArray.size(); i++){
+			possibleTileArray.get(i).setEffect(tileShadow);
+		}
+		
+	}
 }

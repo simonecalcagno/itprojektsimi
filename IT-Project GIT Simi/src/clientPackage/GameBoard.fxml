@@ -15,211 +15,211 @@
             <Image url="@../resource/Atlantis%20colour.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="tile49" fitHeight="70.0" fitWidth="70.0" layoutX="957.0" layoutY="155.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile49" fitHeight="70.0" fitWidth="70.0" layoutX="957.0" layoutY="155.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resource/narcos.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="tile1" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="164.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile1" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="164.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
            <Image url="@../resource/narcos.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="tile2" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="234.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile2" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="234.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resource/narcos.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="tile3" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="304.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile3" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="304.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resource/narcos.jpg" /> 
          </image>
       </ImageView>
-      <ImageView fx:id="tile4" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="374.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile4" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="374.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
            <Image url="@../resource/narcos.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="tile5" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="444.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile5" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="444.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
          <Image url="@../resource/narcos.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="tile6" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="514.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile6" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="514.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
          <Image url="@../resource/narcos.jpg" />
             
          </image>
       </ImageView>
-      <ImageView fx:id="tile7" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="584.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile7" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="584.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 			<Image url="@../resource/narcos.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="tile8" fitHeight="70.0" fitWidth="70.0" layoutX="186.0" layoutY="584.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile8" fitHeight="70.0" fitWidth="70.0" layoutX="186.0" layoutY="584.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="tile9" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="584.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile9" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="584.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="tile10" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="514.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile10" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="514.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="tile11" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="444.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile11" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="444.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile12" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="374.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile12" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="374.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile13" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="304.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile13" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="304.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile14" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="234.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile14" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="234.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile15" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="164.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile15" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="164.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile16" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="94.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile16" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="94.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile17" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="15.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile17" fitHeight="70.0" fitWidth="70.0" layoutX="256.0" layoutY="15.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile21" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="155.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile21" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="155.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile22" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="225.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile22" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="225.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile28" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="222.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile28" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="222.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile29" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="152.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile29" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="152.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile30" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="84.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile30" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="84.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile24" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="364.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile24" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="364.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile20" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="85.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile20" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="85.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile23" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="295.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile23" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="295.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile19" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="15.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile19" fitHeight="70.0" fitWidth="70.0" layoutX="396.0" layoutY="15.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile18" fitHeight="70.0" fitWidth="70.0" layoutX="326.0" layoutY="15.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile18" fitHeight="70.0" fitWidth="70.0" layoutX="326.0" layoutY="15.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile25" fitHeight="70.0" fitWidth="70.0" layoutX="466.0" layoutY="364.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile25" fitHeight="70.0" fitWidth="70.0" layoutX="466.0" layoutY="364.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile26" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="364.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile26" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="364.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile31" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="14.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile31" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="14.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile32" fitHeight="70.0" fitWidth="70.0" layoutX="607.0" layoutY="14.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile32" fitHeight="70.0" fitWidth="70.0" layoutX="607.0" layoutY="14.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile33" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="14.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile33" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="14.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile34" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="84.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile34" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="84.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile35" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="152.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile35" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="152.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile36" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="222.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile36" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="222.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile37" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="292.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile37" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="292.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile38" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="364.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile38" fitHeight="70.0" fitWidth="70.0" layoutX="677.0" layoutY="364.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile39" fitHeight="70.0" fitWidth="70.0" layoutX="747.0" layoutY="364.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile39" fitHeight="70.0" fitWidth="70.0" layoutX="747.0" layoutY="364.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile40" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="364.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile40" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="364.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile46" fitHeight="70.0" fitWidth="70.0" layoutX="887.0" layoutY="14.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile46" fitHeight="70.0" fitWidth="70.0" layoutX="887.0" layoutY="14.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile45" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="14.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile45" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="14.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile44" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="84.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile44" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="84.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile43" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="152.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile43" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="152.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile42" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="222.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile42" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="222.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile27" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="292.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile27" fitHeight="70.0" fitWidth="70.0" layoutX="536.0" layoutY="292.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile47" fitHeight="70.0" fitWidth="70.0" layoutX="957.0" layoutY="14.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile47" fitHeight="70.0" fitWidth="70.0" layoutX="957.0" layoutY="14.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile48" fitHeight="70.0" fitWidth="70.0" layoutX="957.0" layoutY="84.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile48" fitHeight="70.0" fitWidth="70.0" layoutX="957.0" layoutY="84.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
-      <ImageView fx:id="tile41" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="292.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tile41" fitHeight="70.0" fitWidth="70.0" layoutX="817.0" layoutY="292.0" onMouseClicked="#collectTile" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
