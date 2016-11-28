@@ -12,7 +12,9 @@ import commonPackage.Card;
 import commonPackage.Tile;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
@@ -20,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class GameController implements Initializable, Cloneable {
 
@@ -40,6 +43,10 @@ public class GameController implements Initializable, Cloneable {
 	HBox moveCardsBox;
 	@FXML
 	Button lobbyButton;
+	@FXML
+	Button b_BuyCard;
+	@FXML
+	Label numOfDeck;
 	@FXML
 	ImageView tile1;
 	@FXML
@@ -148,6 +155,18 @@ public class GameController implements Initializable, Cloneable {
 	ImageView moveCard4;
 	@FXML
 	ImageView moveCard5;
+	@FXML
+	HBox moveCardsBox1;
+	@FXML
+	ImageView moveCard6;
+	@FXML
+	ImageView moveCard7;
+	@FXML
+	ImageView moveCard8;
+	@FXML
+	ImageView moveCard9;
+	@FXML
+	ImageView moveCard10;
 
 	//Bilder welche im Ordner resource abgelget sind instanziert als Image
 
@@ -218,11 +237,12 @@ public class GameController implements Initializable, Cloneable {
 
 	private ArrayList<Tile> startBoard;
 	private ImageView[] tileImages;
-	private ImageView[] moveImages;
-	private ArrayList<Card> cards;
-	private ArrayList<Card> playerCards;
+	public static ArrayList<ImageView> moveImages;
+	private static ArrayList<Card> cards;
+	private static ArrayList<Card> playerCards;
 	static InnerShadow tileShadow;
 	Tile Water = new Tile(water, 0, "water");
+	private static Label numOfDeck1 = new Label();
 
 
 
@@ -247,20 +267,27 @@ public class GameController implements Initializable, Cloneable {
 		}
 
 		cards = new ArrayList<Card>(setStartMoveCards());
+		System.out.println(cards);
 		//proforma, playerCards muss beim Player Objekt instanziert werden
 		//hier nur zu test Zwecken
 		playerCards = new ArrayList<Card>();
 		for(int i = 0; i < 5; i++){
-			playerCards.add(cards.get(i));
+			playerCards.add(cards.get(0));
+			cards.remove(0);
 		}
-
+		
 		initMoveCardArray();
 		int countMoveCard = 0;
-		for(int i = 0; i < moveImages.length; i++){
-			moveImages[countMoveCard].setImage(cards.get(i).getImage());
+
+		for(int i = 0; i < playerCards.size(); i++){
+			moveImages.get(countMoveCard).setImage(playerCards.get(i).getImage());
 			countMoveCard++;
 		}
-
+		
+		String numberOfDeck = String.valueOf(cards.size());
+		numOfDeck1.setText(numberOfDeck);
+		numOfDeck.setText(numOfDeck1.getText());
+		
 		System.out.println(cards);
 
 
@@ -594,15 +621,40 @@ public class GameController implements Initializable, Cloneable {
 
 	//setzt ImageViews in einem Array damit wir auf diese zugreiffen können
 	public void initMoveCardArray(){
-		moveImages = new ImageView[5];
+		moveImages = new ArrayList<ImageView>();
 
-		moveImages[0] = moveCard1;
-		moveImages[1] = moveCard2;
-		moveImages[2] = moveCard3;
-		moveImages[3] = moveCard4;
-		moveImages[4] = moveCard5;
+		moveImages.add(moveCard1);
+		moveImages.add(moveCard2);
+		moveImages.add(moveCard3);
+		moveImages.add(moveCard4);
+		moveImages.add(moveCard5);
+		moveImages.add(moveCard6);
+		moveImages.add(moveCard7);
+		moveImages.add(moveCard8);
+		moveImages.add(moveCard9);
+		moveImages.add(moveCard10);
 
 	}
+	
+	public static void addMoveImage(int count){
+		moveImages.get(count).setVisible(true);
+		int countCards = 0;
+		
+		playerCards.add(cards.get(countCards));
+		moveImages.get(count).setImage(cards.get(countCards).getImage());
+		cards.remove(countCards);
+		
+		String numberOfDeck = String.valueOf(cards.size());
+		numOfDeck1.setText(numberOfDeck);
+		setNumOfDeck(numberOfDeck);
+		
+	}
+	
+	public static void setNumOfDeck(String numberOfDeck){
+		numOfDeck1.setText(numberOfDeck);
+		numOfDeck1.getLabelFor(numOfDeck);
+	}
+	
 
 	//zeigt im Player seine mögliche Spielzüge welche er machen kann
 	//wenn sich die mouse über eine Bewegungskarte bewegt, dann wird diese highlightet sowie die 
@@ -679,5 +731,19 @@ public class GameController implements Initializable, Cloneable {
 			possibleTileArray.get(i).setEffect(tileShadow);
 		}
 		
+	}
+	
+	//öffnet das GUI um Karte zu kaufen
+	public void switchToBuyCard(){
+		try{
+			FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("BuyCard.fxml"));
+			Pane rootPane = (Pane) fxmlloader.load();
+			Stage stage = new Stage();
+			stage.setResizable(false);
+			stage.setScene(new Scene(rootPane));
+			stage.show();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 }
