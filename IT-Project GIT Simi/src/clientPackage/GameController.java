@@ -26,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -298,7 +299,11 @@ public class GameController implements Initializable, Cloneable{
 		
 		System.out.println(cards);
 
-
+		Rectangle avatar = createAvatar();
+		
+		startBox.getChildren().add(avatar);
+		avatar.setLayoutX(75);
+		avatar.setLayoutY(80);
 
 
 	}
@@ -750,6 +755,28 @@ public class GameController implements Initializable, Cloneable{
 		}catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	//erstellt Avatar, hier muss noch gemäss Anzahl Spieler die Farbe ändern, die Anzahl muss als Paramter dieser
+	//Methode übergeben werden damit der loop der for schleife gesetzt werden kann
+	public Rectangle createAvatar(){
+		Color[] colors = new Color[4];
+		colors[0] = Color.RED;
+		colors[1] = Color.BLUE;
+		colors[2] = Color.GREEN;
+		colors[3] = Color.YELLOW;
+		
+		Rectangle avatar = new Rectangle();
+		avatar.setArcHeight(2);
+		avatar.setArcWidth(2);
+		avatar.setFill(colors[0]);
+		avatar.setHeight(20);
+		avatar.setWidth(20);
+		
+	//	for(int i = 0; i < anzahlSpieler; i++){
+	//		avatar.setFill(colors[i]);
+	//	}
+		return avatar;
 	}
 
 }

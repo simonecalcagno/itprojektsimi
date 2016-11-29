@@ -1,34 +1,52 @@
 package commonPackage;
 
+import clientPackage.TableDataSet;
+
+import commonPackage.Player;
+
 public class Session {
 
-	private Game game;
+
 	private int numOfPlayers;
 	private Player[] players;
 	private String sessionName;
 
 
-	public Session(String sessionName, int numOfPlayers){
+	
+	public Session(String sessionName, int numOfPlayers, Player[] players){
 		this.sessionName = sessionName;
 		this.numOfPlayers = numOfPlayers;
-		players = new Player[numOfPlayers];
+		this.players =players;
 		
-
+	}
 		
-		
-		//Player, der Session erstellt hat, wird an erster Stelle
-		//zum Player-Array hinzugefügt
-/*		for(Player p:Player.registeredPlayers){
-			if(p.getPCName().equals(System.getProperty("user.name"))){
-				players[0] = p;
-			}
-		}
-*/}
-
-	public void startGame(Player[] players){
-		Game game = new Game(players);
-		//Button "Session starten" muss disabled werden, wenn 
-		//players[0] und User nicht übereinstimmen
+	//holt die selektierte Sitzung um das Spiel zu starten
+	public TableDataSet getOpenSession(TableDataSet data){
+		return data;
+	}
+	
+	public void setSessionName(String sessionName){
+		this.sessionName = sessionName;
+	}
+	
+	public String getSessionName(){
+		return this.sessionName;
+	}
+	
+	public void setNumOfPlayers(int numOfPlayers){
+		this.numOfPlayers = numOfPlayers;
+	}
+	
+	public int getNumOfPlayers(){
+		return this.numOfPlayers;
+	}
+	
+	public void setPlayers(Player [] players){
+		this.players = players;
+	}
+	
+	public Player [] getPlayers(){
+		return this.players;
 	}
 
 
