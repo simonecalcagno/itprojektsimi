@@ -8,12 +8,16 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import javax.swing.GroupLayout.Alignment;
+
 import commonPackage.Card;
 import commonPackage.Tile;
+import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.InnerShadow;
@@ -22,9 +26,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class GameController implements Initializable, Cloneable {
+public class GameController implements Initializable, Cloneable{
 
 
 	// Elemente vom GUI definieren
@@ -45,8 +51,6 @@ public class GameController implements Initializable, Cloneable {
 	Button lobbyButton;
 	@FXML
 	Button b_BuyCard;
-	@FXML
-	Label numOfDeck;
 	@FXML
 	ImageView tile1;
 	@FXML
@@ -240,9 +244,9 @@ public class GameController implements Initializable, Cloneable {
 	public static ArrayList<ImageView> moveImages;
 	private static ArrayList<Card> cards;
 	private static ArrayList<Card> playerCards;
-	static InnerShadow tileShadow;
+	private static InnerShadow tileShadow;
+	private static Label numOfDeck = new Label();
 	Tile Water = new Tile(water, 0, "water");
-	private static Label numOfDeck1 = new Label();
 
 
 
@@ -254,20 +258,24 @@ public class GameController implements Initializable, Cloneable {
 	//somit haben wir ein visuelles GameBoard
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		//Label mit folgende Eigenschaften zur StackPane hinzufügen
+		numOfDeck.setFont(Font.font("System", FontWeight.BOLD, 40));
+		numOfDeck.setTextFill(Color.WHITE);
+		numOfDeck.setAlignment(Pos.CENTER);
+		movementCards.getChildren().add(numOfDeck);
 
+		//start Plättchen aufs Board setzen
 		startBoard = new ArrayList<Tile>(setStartTiles());
-
 		initTileArray();
-
 		int countTile = 0;
-
 		for(int i = 0; i < startBoard.size(); i++){
 			tileImages[countTile].setImage(startBoard.get(i).getImage());
 			countTile++;
 		}
 
+		//Liste mit Bewegungskarte initialisieren
 		cards = new ArrayList<Card>(setStartMoveCards());
-		System.out.println(cards);
 		//proforma, playerCards muss beim Player Objekt instanziert werden
 		//hier nur zu test Zwecken
 		playerCards = new ArrayList<Card>();
@@ -284,9 +292,9 @@ public class GameController implements Initializable, Cloneable {
 			countMoveCard++;
 		}
 		
+		//Anzahl Bewegungskarten im Deck anzeigen
 		String numberOfDeck = String.valueOf(cards.size());
-		numOfDeck1.setText(numberOfDeck);
-		numOfDeck.setText(numOfDeck1.getText());
+		numOfDeck.setText(numberOfDeck);
 		
 		System.out.println(cards);
 
@@ -636,6 +644,7 @@ public class GameController implements Initializable, Cloneable {
 
 	}
 	
+	//zusätzliche Bewegungskarten anzeigen in der zweiten moveCardBox
 	public static void addMoveImage(int count){
 		moveImages.get(count).setVisible(true);
 		int countCards = 0;
@@ -644,16 +653,12 @@ public class GameController implements Initializable, Cloneable {
 		moveImages.get(count).setImage(cards.get(countCards).getImage());
 		cards.remove(countCards);
 		
+		//Anzahl Bewegungskarten im Deck anzeigen
 		String numberOfDeck = String.valueOf(cards.size());
-		numOfDeck1.setText(numberOfDeck);
-		setNumOfDeck(numberOfDeck);
+		numOfDeck.setText(numberOfDeck);
 		
 	}
-	
-	public static void setNumOfDeck(String numberOfDeck){
-		numOfDeck1.setText(numberOfDeck);
-		numOfDeck1.getLabelFor(numOfDeck);
-	}
+
 	
 
 	//zeigt im Player seine mögliche Spielzüge welche er machen kann
@@ -746,4 +751,5 @@ public class GameController implements Initializable, Cloneable {
 			e.printStackTrace();
 		}
 	}
+
 }

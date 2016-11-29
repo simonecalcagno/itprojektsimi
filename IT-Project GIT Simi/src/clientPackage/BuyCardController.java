@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+
+//Klasse um zusätzliche Karten zu kaufen
 public class BuyCardController implements Initializable {
 	
 	@FXML
@@ -25,7 +27,7 @@ public class BuyCardController implements Initializable {
 		cb_BuyCard.setItems(cb_BuyCardList);
 		
 	}
-	
+	//gewünschte Anzahl Karten werden dem Player hinzugefügt
 	public void buyCard(){
 		int numOfCards = cb_BuyCard.getValue();
 		int costs;
@@ -34,12 +36,15 @@ public class BuyCardController implements Initializable {
 		
 		//hier kommt noch die methode welche die costs beim Score des Players abzieht
 		
+		//count startet bei 5 weil die zusätzliche Karte 
+		//ab moveCard6 hinzugefügt werden sollen
 		for(int i = 0; i < numOfCards; i++){
 				GameController.addMoveImage(count);
 				count++;
 		}
 		
 		
+		//Fenster sobald die Karten gekauft wurden schliessen
 		Stage stage = (Stage)b_Buy.getScene().getWindow();
 		stage.close();
 		
