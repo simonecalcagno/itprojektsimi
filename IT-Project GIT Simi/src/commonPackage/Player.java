@@ -13,7 +13,10 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Player {
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
+public class Player extends Circle {
 
 	private String userName;
 	private Date dateOfBirth;
@@ -22,10 +25,10 @@ public class Player {
 	private int score;
 	public ArrayList<Tile> tiles;
 	private String PCName;
-	private Avatar[] avatars;
-	private Avatar avatar1 = new Avatar();
-	private Avatar avatar2 = new Avatar();
-	private Avatar avatar3 = new Avatar();
+	private ArrayList<Circle> avatars;
+	private Circle avatar1 = new Circle();
+	private Circle avatar2 = new Circle();
+	private Circle avatar3 = new Circle();
 
 	public Player(String userName, String password, Date dateOfBirth){
 		this.userName = userName;
@@ -35,10 +38,14 @@ public class Player {
 		cards = new ArrayList<Card>();
 		tiles = new ArrayList<Tile>();
 		score = 0;
-		avatars = new Avatar[3];
-		avatars[0] = avatar1;
-		avatars[1] = avatar2;
-		avatars[2] = avatar3;
+		avatars = new ArrayList<Circle>();
+		avatars.add(avatar1);
+		avatars.add(avatar2);
+		avatars.add(avatar3);
+		for(int i = 0; i < avatars.size(); i++){
+			avatars.get(i).setRadius(10);
+			avatars.get(i).setStroke(Color.BLACK);
+		}
 	}
 
 	public void setScore(int score){
@@ -145,7 +152,7 @@ public class Player {
 
 	}
 	
-	public Avatar[] getAvatar(){
+	public ArrayList<Circle> getAvatar(){
 		return this.avatars;
 	}
 

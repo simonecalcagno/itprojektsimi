@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.InnerShadow;
@@ -36,7 +37,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class GameController implements Initializable, Cloneable{
+public class GameController extends Circle implements Initializable{
 
 
 	// Elemente vom GUI definieren
@@ -275,7 +276,9 @@ public class GameController implements Initializable, Cloneable{
 	private static Label numOfDeck = new Label();
 	Tile Water = new Tile(water, 0, "water");
 	private static Color[] avatarColors = new Color[4];
-	private static ArrayList<Player> players; 
+	private static ArrayList<Player> players = new ArrayList<Player>(); 
+	private static ArrayList<Circle> avatars;
+
 
 
 
@@ -327,19 +330,28 @@ public class GameController implements Initializable, Cloneable{
 
 		System.out.println(cards);
 
-		
+
 		// ------------------------------------------- provisorisch ab hier
+
+		//avatar Farben instanziert und in einem array gespeichert
 		avatarColors[0] = Color.RED;
 		avatarColors[1] = Color.BLUE;
 		avatarColors[2] = Color.GREEN;
-		avatarColors[3] = Color.YELLOW;
-		
+		avatarColors[3] = Color.ORANGE;
+
+		//proforma 4 Spieler instanziert und diese zur ArrayListe des Spiels hinzugefügt
 		Date date = new Date(1992, 12, 26);
 		Player player1 = new Player("muetter", "hallo", date);
-		Avatar[] avatars = player1.getAvatar();
-		
-		avatars[0].setFill(avatarColors[0]);
+		Player player2 = new Player("nanen", "hallo", date);
+		Player player3 = new Player("hueresohn", "hallo", date);
+		Player player4 = new Player("picka", "hallo", date);
 
+		players.add(player1);
+		players.add(player2);
+		players.add(player3);
+		players.add(player4);
+
+		//die HBoxen der verschiedenen Player in einem Array gespeichert
 		HBox[] sbPlayer = new HBox[4];
 		sbPlayer[0] = sb_player1;
 		sbPlayer[1] = sb_player2;
@@ -347,31 +359,46 @@ public class GameController implements Initializable, Cloneable{
 		sbPlayer[3] = sb_player4;
 
 
-		
-//		Circle avatar = new Circle();
-//		Avatar.createAvatar(avatar);
-		
-		sb_player1.getChildren().add(avatars[0]);
-		
-//		Circle circle = new Circle();
-//		circle.setRadius(10);
-//		circle.setStroke(Color.BLACK);
-//		circle.setFill(avatarColors[1]);
-//		sb_player1.getChildren().add(circle);
-//		sb_player1.getChildren().add(circle);
-//		sb_player1.getChildren().add(circle);
-		
-		
-		for(int x = 0; x < 4; x++){
+		//avatar Listen von den Player holen und in eine arrayListe speichern und diese Listen in eine gesamt Liste speichern
+		//vielleicht geht es auch direkt noch nicht probiert
+		ArrayList<Circle> avatarsPlayer1 = player1.getAvatar();
+		ArrayList<Circle> avatarsPlayer2 = player2.getAvatar();
+		ArrayList<Circle> avatarsPlayer3 = player3.getAvatar();
+		ArrayList<Circle> avatarsPlayer4 = player4.getAvatar();
+		ArrayList<Circle> totalAvatars = new ArrayList<Circle>();
+		totalAvatars.addAll(avatarsPlayer1);
+		totalAvatars.addAll(avatarsPlayer2);
+		totalAvatars.addAll(avatarsPlayer3);
+		totalAvatars.addAll(avatarsPlayer4);
+
+		int count = 0;
+		int count2 = 0;
+
+		//den avatars die zuständige farbe zuteilen und in die entsprechenden Boxen zuteilen
+		for(int x = 0; x < 4; x++){	
 			for(int i = 0; i < 3; i++){
-				Circle avatar = Avatar.createAvatar();
-				avatar.setFill(avatarColors[x]);
-				sbPlayer[x].getChildren().add(avatar);
+				totalAvatars.get(count2).setFill(avatarColors[count]);
+				sbPlayer[count].getChildren().add(totalAvatars.get(count2));
+				count2++;
 			}
+			count++;
 		}
 
-// ---------------------------------------------------------- bis hier
-	}
+		//handler für alle Avatars setzen, sobald ein Avatar gewählt wurde durch Click wird der Effekt gesetzt
+		for(int x = 0; x < players.size();x++){
+			for(int i = 0; i < player1.getAvatar().size(); i++){
+				players.get(x).getAvatar().get(i).setOnMouseClicked(new EventHandler<MouseEvent>(){
+					@Override
+					public void handle(MouseEvent event) {
+						selectetAvatar(event);
+					}
+				});
+			}
+		}
+	}	
+
+	// ---------------------------------------------------------- bis hier
+
 
 	//initialisiert die Instanzvariable tileImages um ein Array mit allen ImageViews zu haben
 	//damit wir darauf zugreiffen können um ein Bild zu setzen
@@ -817,6 +844,15 @@ public class GameController implements Initializable, Cloneable{
 		}catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	public static void selectetAvatar(MouseEvent event){
+		Circle selectetAvatar = (Circle) event.getSource();
+		InnerShadow avatarShadow = new InnerShadow();
+		avatarShadow.setChoke(0.5);
+		avatarShadow.setColor(Color.web("F7FF00"));
+		avatarShadow.setRadius(11);
+		selectetAvatar.setEffect(avatarShadow);
 	}
 
 }
