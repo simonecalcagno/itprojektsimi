@@ -4,13 +4,18 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 import javax.swing.GroupLayout.Alignment;
 
+import commonPackage.Avatar;
 import commonPackage.Card;
+import commonPackage.Player;
 import commonPackage.Tile;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -26,7 +31,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -36,10 +41,31 @@ public class GameController implements Initializable, Cloneable{
 
 	// Elemente vom GUI definieren
 
+
 	@FXML
-	HBox startBox;
+	VBox startBox;
 	@FXML
-	HBox endBox;
+	VBox endBox;
+	@FXML
+	HBox sb_player1;
+	@FXML
+	HBox sb_player2;
+	@FXML
+	HBox sb_player3;
+	@FXML
+	HBox sb_player4;
+	@FXML
+	HBox eb_player1;
+	@FXML
+	HBox eb_player2;
+	@FXML
+	HBox eb_player3;
+	@FXML
+	HBox eb_player4;
+	@FXML
+	ImageView atlantis;
+	@FXML
+	ImageView land;
 	@FXML
 	Button finishButton;	
 	@FXML
@@ -248,6 +274,8 @@ public class GameController implements Initializable, Cloneable{
 	private static InnerShadow tileShadow;
 	private static Label numOfDeck = new Label();
 	Tile Water = new Tile(water, 0, "water");
+	private static Color[] avatarColors = new Color[4];
+	private static ArrayList<Player> players; 
 
 
 
@@ -259,7 +287,7 @@ public class GameController implements Initializable, Cloneable{
 	//somit haben wir ein visuelles GameBoard
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		//Label mit folgende Eigenschaften zur StackPane hinzufügen
 		numOfDeck.setFont(Font.font("System", FontWeight.BOLD, 40));
 		numOfDeck.setTextFill(Color.WHITE);
@@ -284,7 +312,7 @@ public class GameController implements Initializable, Cloneable{
 			playerCards.add(cards.get(0));
 			cards.remove(0);
 		}
-		
+
 		initMoveCardArray();
 		int countMoveCard = 0;
 
@@ -292,20 +320,57 @@ public class GameController implements Initializable, Cloneable{
 			moveImages.get(countMoveCard).setImage(playerCards.get(i).getImage());
 			countMoveCard++;
 		}
-		
+
 		//Anzahl Bewegungskarten im Deck anzeigen
 		String numberOfDeck = String.valueOf(cards.size());
 		numOfDeck.setText(numberOfDeck);
-		
+
 		System.out.println(cards);
 
-		Rectangle avatar = createAvatar();
 		
-		startBox.getChildren().add(avatar);
-		avatar.setLayoutX(75);
-		avatar.setLayoutY(80);
+		// ------------------------------------------- provisorisch ab hier
+		avatarColors[0] = Color.RED;
+		avatarColors[1] = Color.BLUE;
+		avatarColors[2] = Color.GREEN;
+		avatarColors[3] = Color.YELLOW;
+		
+		Date date = new Date(1992, 12, 26);
+		Player player1 = new Player("muetter", "hallo", date);
+		Avatar[] avatars = player1.getAvatar();
+		
+		avatars[0].setFill(avatarColors[0]);
+
+		HBox[] sbPlayer = new HBox[4];
+		sbPlayer[0] = sb_player1;
+		sbPlayer[1] = sb_player2;
+		sbPlayer[2] = sb_player3;
+		sbPlayer[3] = sb_player4;
 
 
+		
+//		Circle avatar = new Circle();
+//		Avatar.createAvatar(avatar);
+		
+		sb_player1.getChildren().add(avatars[0]);
+		
+//		Circle circle = new Circle();
+//		circle.setRadius(10);
+//		circle.setStroke(Color.BLACK);
+//		circle.setFill(avatarColors[1]);
+//		sb_player1.getChildren().add(circle);
+//		sb_player1.getChildren().add(circle);
+//		sb_player1.getChildren().add(circle);
+		
+		
+		for(int x = 0; x < 4; x++){
+			for(int i = 0; i < 3; i++){
+				Circle avatar = Avatar.createAvatar();
+				avatar.setFill(avatarColors[x]);
+				sbPlayer[x].getChildren().add(avatar);
+			}
+		}
+
+// ---------------------------------------------------------- bis hier
 	}
 
 	//initialisiert die Instanzvariable tileImages um ein Array mit allen ImageViews zu haben
@@ -648,30 +713,30 @@ public class GameController implements Initializable, Cloneable{
 		moveImages.add(moveCard10);
 
 	}
-	
+
 	//zusätzliche Bewegungskarten anzeigen in der zweiten moveCardBox
 	public static void addMoveImage(int count){
 		moveImages.get(count).setVisible(true);
 		int countCards = 0;
-		
+
 		playerCards.add(cards.get(countCards));
 		moveImages.get(count).setImage(cards.get(countCards).getImage());
 		cards.remove(countCards);
-		
+
 		//Anzahl Bewegungskarten im Deck anzeigen
 		String numberOfDeck = String.valueOf(cards.size());
 		numOfDeck.setText(numberOfDeck);
-		
+
 	}
 
-	
+
 
 	//zeigt im Player seine mögliche Spielzüge welche er machen kann
 	//wenn sich die mouse über eine Bewegungskarte bewegt, dann wird diese highlightet sowie die 
 	//passenden Tiles werden auch gehighlightet
 	public void showPossibleMove(MouseEvent event){
 		String selectetMoveCard = handleMoveCard(event);
-		
+
 		String subString = selectetMoveCard.substring(8);
 		int moveCardPosition = Integer.parseInt(subString);
 
@@ -679,27 +744,24 @@ public class GameController implements Initializable, Cloneable{
 
 		ArrayList<Tile> possibleTiles = new ArrayList<Tile>();
 		ArrayList<ImageView> possibleTilesArray = new ArrayList<ImageView>();
-		
+
 		for(int i = 0; i < startBoard.size(); i++){
 			if(startBoard.get(i).getColor().equals(selectMoveCard.getColor())){
 				possibleTiles.add(startBoard.get(i));
 				possibleTilesArray.add(tileImages[i]);
 			}
 		}
-		
+
 		showPossibleTiles(possibleTilesArray);
-		
-		
-		
 		System.out.println(selectMoveCard.getColor());
-		
+
 
 	}
 
 	//handle MouseEvent Methode welche die ausgewählte Bewegungskarte Highlightet
 	public String handleMoveCard(MouseEvent event){
 
-		
+
 		ImageView moveCard = (ImageView) event.getSource();
 		String selectetMoveCard = moveCard.getId();
 		InnerShadow iShadow = new InnerShadow();
@@ -709,7 +771,7 @@ public class GameController implements Initializable, Cloneable{
 		iShadow.setWidth(29.9);
 		iShadow.setRadius(14.45);
 		moveCard.setEffect(iShadow);
-		
+
 		return selectetMoveCard;
 	}
 
@@ -723,26 +785,26 @@ public class GameController implements Initializable, Cloneable{
 		tileShadow.setHeight(0);
 		tileShadow.setWidth(0);
 		tileShadow.setRadius(0);
-		
+
 	}
-	
+
 	//effekt welcher bei den Tiles ausgelöst wird wenn eine Bewegungskarte ausgewählt wird
 	public static void showPossibleTiles(ArrayList<ImageView> possibleTileArray){
-		
-		
+
+
 		tileShadow = new InnerShadow();
 		tileShadow.setChoke(0.5);
 		tileShadow.setColor(Color.web("F7FF00"));
 		tileShadow.setHeight(50);
 		tileShadow.setWidth(50);
 		tileShadow.setRadius(10);
-		
+
 		for(int i = 0 ; i < possibleTileArray.size(); i++){
 			possibleTileArray.get(i).setEffect(tileShadow);
 		}
-		
+
 	}
-	
+
 	//öffnet das GUI um Karte zu kaufen
 	public void switchToBuyCard(){
 		try{
@@ -755,28 +817,6 @@ public class GameController implements Initializable, Cloneable{
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-	}
-	
-	//erstellt Avatar, hier muss noch gemäss Anzahl Spieler die Farbe ändern, die Anzahl muss als Paramter dieser
-	//Methode übergeben werden damit der loop der for schleife gesetzt werden kann
-	public Rectangle createAvatar(){
-		Color[] colors = new Color[4];
-		colors[0] = Color.RED;
-		colors[1] = Color.BLUE;
-		colors[2] = Color.GREEN;
-		colors[3] = Color.YELLOW;
-		
-		Rectangle avatar = new Rectangle();
-		avatar.setArcHeight(2);
-		avatar.setArcWidth(2);
-		avatar.setFill(colors[0]);
-		avatar.setHeight(20);
-		avatar.setWidth(20);
-		
-	//	for(int i = 0; i < anzahlSpieler; i++){
-	//		avatar.setFill(colors[i]);
-	//	}
-		return avatar;
 	}
 
 }

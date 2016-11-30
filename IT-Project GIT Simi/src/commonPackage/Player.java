@@ -22,7 +22,10 @@ public class Player {
 	private int score;
 	public ArrayList<Tile> tiles;
 	private String PCName;
-	private String avatar;
+	private Avatar[] avatars;
+	private Avatar avatar1 = new Avatar();
+	private Avatar avatar2 = new Avatar();
+	private Avatar avatar3 = new Avatar();
 
 	public Player(String userName, String password, Date dateOfBirth){
 		this.userName = userName;
@@ -32,6 +35,10 @@ public class Player {
 		cards = new ArrayList<Card>();
 		tiles = new ArrayList<Tile>();
 		score = 0;
+		avatars = new Avatar[3];
+		avatars[0] = avatar1;
+		avatars[1] = avatar2;
+		avatars[2] = avatar3;
 	}
 
 	public void setScore(int score){
@@ -138,8 +145,8 @@ public class Player {
 
 	}
 	
-	public void setAvatar(String avatar){
-		this.avatar = avatar;
+	public Avatar[] getAvatar(){
+		return this.avatars;
 	}
 
 

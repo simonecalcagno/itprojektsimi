@@ -1,14 +1,63 @@
 package commonPackage;
 
-public class Avatar {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import javafx.scene.effect.InnerShadow;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
+public class Avatar extends Circle implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3865303457672912728L;
+	private int avatarID;
+	private static int count = 100;
+	private static Circle avatar;
 	
-	private String[] avatar = new String[4];{
-		
-		avatar[0] = "red";
-		avatar[1] = "blue";
-		avatar[2] = "green";
-		avatar[3] = "yellow";
+	public Avatar(){
+		Circle avatar = new Circle();
+		avatar.setRadius(10);
+		avatar.setStroke(Color.BLACK);
+		System.out.println("dinimuetter");
 	}
+	
+	public static int createId(){
+		int id = count;
+		id++;
+		return id;
+	}
+	
+	public void moveAvatar(){
+		
+	}
+	
+	public static Circle createAvatar(){
+		Circle avatar = new Circle();
+		avatar.setRadius(10);
+		avatar.setStroke(Color.BLACK);
+		return avatar;
+	}
+	
+	
+	public static void selectetAvatar(MouseEvent event){
+		
+		
+		Avatar selectetAvatar = (Avatar) event.getSource();
+		
+		InnerShadow avatarShadow = new InnerShadow();
+		avatarShadow.setChoke(0.5);
+		avatarShadow.setColor(Color.web("F7FF00"));
+		avatarShadow.setRadius(11);
+		selectetAvatar.setEffect(avatarShadow);
+		
+		
+	}
+	
+	
 	
 	
 

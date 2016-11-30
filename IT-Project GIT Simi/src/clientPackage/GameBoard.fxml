@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.effect.*?>
@@ -14,16 +15,6 @@
       <ImageView fitHeight="700.0" fitWidth="1200.0">
          <image>
             <Image url="@../resource/Atlantis%20colour.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="tile49" fitHeight="70.0" fitWidth="70.0" layoutX="957.0" layoutY="155.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resource/narcos.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="tile1" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="164.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
-         <image>
-           <Image url="@../resource/narcos.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="tile2" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="234.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
@@ -224,6 +215,16 @@
          <image>
 <Image url="@../resource/narcos.jpg" />         </image>
       </ImageView>
+      <ImageView fx:id="atlantis" fitHeight="178.0" fitWidth="200.0" layoutX="43.0" layoutY="30.0">
+         <image>
+            <Image url="@../resource/atlantis.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tile1" fitHeight="70.0" fitWidth="70.0" layoutX="116.0" layoutY="164.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+         <image>
+           <Image url="@../resource/narcos.jpg" />
+         </image>
+      </ImageView>
       <HBox fx:id="moveCardsBox" layoutX="385.0" layoutY="444.0" prefHeight="104.0" prefWidth="350.0" style="-fx-background-color: #8EFFFA;">
          <children>
             <ImageView fx:id="moveCard1" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
@@ -252,6 +253,11 @@
             </ImageView>
          </children>
       </HBox>
+      <ImageView fx:id="land" fitHeight="158.0" fitWidth="200.0" layoutX="901.0" layoutY="190.0">
+         <image>
+            <Image url="@../resource/land.jpg" />
+         </image>
+      </ImageView>
       <ListView fx:id="scoreTable" layoutX="909.0" layoutY="393.0" prefHeight="142.0" prefWidth="236.0" style="-fx-background-color: yellow;" />
       <StackPane fx:id="movementCards" layoutX="775.0" layoutY="461.0" prefHeight="105.0" prefWidth="70.0" style="-fx-background-color: white;">
          <children>
@@ -261,8 +267,6 @@
                </image>
             </ImageView>
          </children></StackPane>
-      <HBox fx:id="startBox" layoutX="71.0" layoutY="79.0" prefHeight="80.0" prefWidth="160.0" style="-fx-background-color: orange;" />
-      <HBox fx:id="endBox" layoutX="912.0" layoutY="229.0" prefHeight="80.0" prefWidth="160.0" style="-fx-background-color: brown;" />
       <Button fx:id="finishButton" layoutX="922.0" layoutY="565.0" mnemonicParsing="false" onAction="#finishTurn" prefHeight="38.0" prefWidth="170.0" text="Spielzug beenden" />
       <Button fx:id="lobbyButton" layoutX="973.0" layoutY="629.0" mnemonicParsing="false" onAction="#backToLobby" text="zur Lobby" />
       <Button fx:id="b_BuyCard" layoutX="765.0" layoutY="591.0" mnemonicParsing="false" onAction="#switchToBuyCard" text="Karte kaufen" />
@@ -298,5 +302,24 @@
             </ImageView>
          </children>
       </HBox>
+      <ImageView fx:id="tile49" fitHeight="70.0" fitWidth="70.0" layoutX="957.0" layoutY="155.0" onMouseClicked="#collectTile" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resource/narcos.jpg" />
+         </image>
+      </ImageView>
+      <VBox fx:id="startBox" layoutX="116.0" layoutY="44.0" prefHeight="120.0" prefWidth="70.0">
+         <children>
+            <HBox fx:id="sb_player1" prefHeight="30.0" prefWidth="96.0" />
+            <HBox fx:id="sb_player2" prefHeight="30.0" prefWidth="96.0" />
+            <HBox fx:id="sb_player3" prefHeight="30.0" prefWidth="96.0" />
+            <HBox fx:id="sb_player4" prefHeight="30.0" prefWidth="96.0" />
+         </children></VBox>
+      <VBox fx:id="endBox" layoutX="957.0" layoutY="225.0" prefHeight="114.0" prefWidth="70.0">
+         <children>
+            <HBox fx:id="eb_player1" prefHeight="30.0" prefWidth="96.0" />
+            <HBox fx:id="eb_player2" prefHeight="30.0" prefWidth="96.0" />
+            <HBox fx:id="eb_player3" prefHeight="30.0" prefWidth="96.0" />
+            <HBox fx:id="eb_player4" prefHeight="30.0" prefWidth="96.0" />
+         </children></VBox>
    </children>
 </Pane>
