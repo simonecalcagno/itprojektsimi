@@ -385,12 +385,15 @@ public class GameController extends Circle implements Initializable{
 		}
 
 		//handler für alle Avatars setzen, sobald ein Avatar gewählt wurde durch Click wird der Effekt gesetzt
+		//der Player kann jeweils nur einen Avatar wählen
+
 		for(int x = 0; x < players.size();x++){
 			for(int i = 0; i < player1.getAvatar().size(); i++){
 				players.get(x).getAvatar().get(i).setOnMouseClicked(new EventHandler<MouseEvent>(){
+
 					@Override
 					public void handle(MouseEvent event) {
-						selectetAvatar(event);
+						handleSelectetAvatar(event);
 					}
 				});
 			}
@@ -814,6 +817,30 @@ public class GameController extends Circle implements Initializable{
 		tileShadow.setRadius(0);
 
 	}
+	
+	public void moveCardClicked(MouseEvent event){
+		ImageView moveCard = (ImageView) event.getSource();
+		InnerShadow iShadow = new InnerShadow();
+		iShadow.setChoke(0.45);
+		iShadow.setColor(Color.web("F7FF00"));
+		iShadow.setHeight(29.9);
+		iShadow.setWidth(29.9);
+		iShadow.setRadius(14.45);
+		moveCard.setOnMouseExited(null);
+		for(int i = 0; i < moveCard.getParent().getChildrenUnmodifiable().size(); i++){
+			if(!(moveCard.getParent().getChildrenUnmodifiable().get(i).equals(moveCard))){
+				moveCard.getParent().getChildrenUnmodifiable().get(i).setEffect(null);
+				moveCard.getParent().getChildrenUnmodifiable().get(i).setOnMouseExited(new EventHandler<MouseEvent>(){
+					@Override
+					public void handle(MouseEvent event) {
+						handleMouseExit(event);		
+					}
+				});
+			}
+		}
+		moveCard.setEffect(iShadow);
+		System.out.println("dinimuetter");
+	}
 
 	//effekt welcher bei den Tiles ausgelöst wird wenn eine Bewegungskarte ausgewählt wird
 	public static void showPossibleTiles(ArrayList<ImageView> possibleTileArray){
@@ -846,12 +873,18 @@ public class GameController extends Circle implements Initializable{
 		}
 	}
 
-	public static void selectetAvatar(MouseEvent event){
+
+	public static void handleSelectetAvatar(MouseEvent event){
 		Circle selectetAvatar = (Circle) event.getSource();
 		InnerShadow avatarShadow = new InnerShadow();
 		avatarShadow.setChoke(0.5);
 		avatarShadow.setColor(Color.web("F7FF00"));
 		avatarShadow.setRadius(11);
+		for(int i = 0; i < selectetAvatar.getParent().getChildrenUnmodifiable().size(); i++){
+			if(!(selectetAvatar.getParent().getChildrenUnmodifiable().get(i).equals(event.getSource()))){
+				selectetAvatar.getParent().getChildrenUnmodifiable().get(i).setEffect(null);
+			}
+		}
 		selectetAvatar.setEffect(avatarShadow);
 	}
 

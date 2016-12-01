@@ -227,27 +227,27 @@
       </ImageView>
       <HBox fx:id="moveCardsBox" layoutX="385.0" layoutY="444.0" prefHeight="104.0" prefWidth="350.0" style="-fx-background-color: #8EFFFA;">
          <children>
-            <ImageView fx:id="moveCard1" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moveCard1" fitHeight="120.0" fitWidth="70.0" onMouseClicked="#moveCardClicked" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resource/lazio2.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="moveCard2" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moveCard2" fitHeight="120.0" fitWidth="70.0" onMouseClicked="#moveCardClicked" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
                <image>
 <Image url="@../resource/lazio2.jpg" />               </image>
             </ImageView>
-            <ImageView fx:id="moveCard3" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moveCard3" fitHeight="120.0" fitWidth="70.0" onMouseClicked="#moveCardClicked" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
                <image>
 <Image url="@../resource/lazio2.jpg" />               </image>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="moveCard4" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moveCard4" fitHeight="120.0" fitWidth="70.0" onMouseClicked="#moveCardClicked" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
                <image>
 <Image url="@../resource/lazio2.jpg" />               </image>
             </ImageView>
-            <ImageView fx:id="moveCard5" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moveCard5" fitHeight="120.0" fitWidth="70.0" onMouseClicked="#moveCardClicked" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true">
                <image>
 <Image url="@../resource/lazio2.jpg" />               </image>
             </ImageView>
@@ -272,17 +272,17 @@
       <Button fx:id="b_BuyCard" layoutX="765.0" layoutY="591.0" mnemonicParsing="false" onAction="#switchToBuyCard" text="Karte kaufen" />
       <HBox fx:id="moveCardsBox1" layoutX="385.0" layoutY="563.0" prefHeight="104.0" prefWidth="350.0" style="-fx-background-color: #8EFFFA;">
          <children>
-            <ImageView fx:id="moveCard6" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="moveCard6" fitHeight="120.0" fitWidth="70.0" onMouseClicked="#moveCardClicked" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../resource/lazio2.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="moveCard7" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="moveCard7" fitHeight="120.0" fitWidth="70.0" onMouseClicked="#moveCardClicked" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../resource/lazio2.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="moveCard8" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="moveCard8" fitHeight="120.0" fitWidth="70.0" onMouseClicked="#moveCardClicked" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true" visible="false">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -290,12 +290,12 @@
                   <Image url="@../resource/lazio2.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="moveCard9" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="moveCard9" fitHeight="120.0" fitWidth="70.0" onMouseClicked="#moveCardClicked" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../resource/lazio2.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="moveCard10" fitHeight="120.0" fitWidth="70.0" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="moveCard10" fitHeight="120.0" fitWidth="70.0" onMouseClicked="#moveCardClicked" onMouseEntered="#showPossibleMove" onMouseExited="#handleMouseExit" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../resource/lazio2.jpg" />
                </image>
