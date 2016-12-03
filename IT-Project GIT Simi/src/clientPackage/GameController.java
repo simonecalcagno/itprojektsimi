@@ -8,6 +8,7 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -18,6 +19,7 @@ import commonPackage.Card;
 import commonPackage.Player;
 import commonPackage.Tile;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -74,7 +76,9 @@ public class GameController extends Circle implements Initializable{
 	@FXML
 	StackPane movementCards;	
 	@FXML
-	HBox moveCardsBox;
+	HBox moveCardsBox0;
+	@FXML
+	VBox vb_playerMoveCards;
 	@FXML
 	Button lobbyButton;
 	@FXML
@@ -788,7 +792,8 @@ public class GameController extends Circle implements Initializable{
 
 	}
 
-	//handle MouseEvent Methode welche die ausgewählte Bewegungskarte Highlightet
+	//handle MouseEvent Methode welche die anvisierte Bewegungskarte Highlightet (onmouseentered) noch nicht
+	//geklickt
 	public String handleMoveCard(MouseEvent event){
 
 
@@ -817,9 +822,26 @@ public class GameController extends Circle implements Initializable{
 		tileShadow.setRadius(0);
 
 	}
-	
+
 	public void moveCardClicked(MouseEvent event){
 		ImageView moveCard = (ImageView) event.getSource();
+		HBox currentMoveCardBox = (HBox) moveCard.getParent();
+		String idCurrentMoveCardBox = currentMoveCardBox.getId();
+		int positionCurrentMoveCardBox = Integer.parseInt(idCurrentMoveCardBox.substring(12));
+		HBox secondMoveCardBox;
+		ArrayList<HBox> boxList = new ArrayList<HBox>();
+		
+		for(int i = 0; i < 2; i++){
+		boxList.add((HBox) currentMoveCardBox.getParent().getChildrenUnmodifiable().get(i));
+		}
+		
+		boxList.remove(positionCurrentMoveCardBox);
+		secondMoveCardBox = boxList.get(0);
+//			if(!(currentMoveCardBox.getId().equals(currentMoveCardBox.getParent().getChildrenUnmodifiable().get(positionCurrentMoveCardBox)))){
+//				secondMoveCardBox =(HBox) currentMoveCardBox.getParent().getChildrenUnmodifiable().get(i);
+//			}
+
+
 		InnerShadow iShadow = new InnerShadow();
 		iShadow.setChoke(0.45);
 		iShadow.setColor(Color.web("F7FF00"));
@@ -827,10 +849,18 @@ public class GameController extends Circle implements Initializable{
 		iShadow.setWidth(29.9);
 		iShadow.setRadius(14.45);
 		moveCard.setOnMouseExited(null);
-		for(int i = 0; i < moveCard.getParent().getChildrenUnmodifiable().size(); i++){
-			if(!(moveCard.getParent().getChildrenUnmodifiable().get(i).equals(moveCard))){
-				moveCard.getParent().getChildrenUnmodifiable().get(i).setEffect(null);
-				moveCard.getParent().getChildrenUnmodifiable().get(i).setOnMouseExited(new EventHandler<MouseEvent>(){
+
+		for(int i = 0; i < currentMoveCardBox.getChildren().size(); i++){
+			if(!(currentMoveCardBox.getChildren().get(i).equals(moveCard) || secondMoveCardBox.getChildren().get(i).equals(moveCard))){
+				currentMoveCardBox.getChildren().get(i).setEffect(null);
+				secondMoveCardBox.getChildren().get(i).setEffect(null);
+				currentMoveCardBox.getChildren().get(i).setOnMouseExited(new EventHandler<MouseEvent>(){
+					@Override
+					public void handle(MouseEvent event) {
+						handleMouseExit(event);		
+					}
+				});
+				secondMoveCardBox.getChildren().get(i).setOnMouseExited(new EventHandler<MouseEvent>(){
 					@Override
 					public void handle(MouseEvent event) {
 						handleMouseExit(event);		
@@ -840,6 +870,19 @@ public class GameController extends Circle implements Initializable{
 		}
 		moveCard.setEffect(iShadow);
 		System.out.println("dinimuetter");
+
+		//		for(int i = 0; i < moveCard.getParent().getChildrenUnmodifiable().size(); i++){
+		//			if(!(moveCard.getParent().getChildrenUnmodifiable().get(i).equals(moveCard))){
+		//				moveCard.getParent().getChildrenUnmodifiable().get(i).setEffect(null);
+		//				moveCard.getParent().getChildrenUnmodifiable().get(i).setOnMouseExited(new EventHandler<MouseEvent>(){
+		//					@Override
+		//					public void handle(MouseEvent event) {
+		//						handleMouseExit(event);		
+		//					}
+		//				});
+		//			}
+		//		}
+		//		moveCard.setEffect(iShadow);
 	}
 
 	//effekt welcher bei den Tiles ausgelöst wird wenn eine Bewegungskarte ausgewählt wird

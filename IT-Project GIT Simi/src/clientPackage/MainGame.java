@@ -10,7 +10,6 @@ public class MainGame extends Application {
 
 	public static void main(String[] args) {
 		launch();
-
 	}
 
 	@Override
