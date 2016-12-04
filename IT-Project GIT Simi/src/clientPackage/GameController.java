@@ -1,5 +1,7 @@
 package clientPackage;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout.Alignment;
 
 import commonPackage.Avatar;
@@ -44,7 +47,108 @@ public class GameController extends Circle implements Initializable{
 
 	// Elemente vom GUI definieren
 
-
+	@FXML
+	HBox tileBox1;
+	@FXML
+	HBox tileBox2;
+	@FXML
+	HBox tileBox3;
+	@FXML
+	HBox tileBox4;
+	@FXML
+	HBox tileBox5;
+	@FXML
+	HBox tileBox6;
+	@FXML
+	HBox tileBox7;
+	@FXML
+	HBox tileBox8;
+	@FXML
+	HBox tileBox9;
+	@FXML
+	HBox tileBox10;
+	@FXML
+	HBox tileBox11;
+	@FXML
+	HBox tileBox12;
+	@FXML
+	HBox tileBox13;
+	@FXML
+	HBox tileBox14;
+	@FXML
+	HBox tileBox15;
+	@FXML
+	HBox tileBox16;
+	@FXML
+	HBox tileBox17;
+	@FXML
+	HBox tileBox18;
+	@FXML
+	HBox tileBox19;
+	@FXML
+	HBox tileBox20;
+	@FXML
+	HBox tileBox21;
+	@FXML
+	HBox tileBox22;
+	@FXML
+	HBox tileBox23;
+	@FXML
+	HBox tileBox24;
+	@FXML
+	HBox tileBox25;
+	@FXML
+	HBox tileBox26;
+	@FXML
+	HBox tileBox27;
+	@FXML
+	HBox tileBox28;
+	@FXML
+	HBox tileBox29;
+	@FXML
+	HBox tileBox30;
+	@FXML
+	HBox tileBox31;
+	@FXML
+	HBox tileBox32;
+	@FXML
+	HBox tileBox33;
+	@FXML
+	HBox tileBox34;
+	@FXML
+	HBox tileBox35;
+	@FXML
+	HBox tileBox36;
+	@FXML
+	HBox tileBox37;
+	@FXML
+	HBox tileBox38;
+	@FXML
+	HBox tileBox39;
+	@FXML
+	HBox tileBox40;
+	@FXML
+	HBox tileBox41;
+	@FXML
+	HBox tileBox42;
+	@FXML
+	HBox tileBox43;
+	@FXML
+	HBox tileBox44;
+	@FXML
+	HBox tileBox45;
+	@FXML
+	HBox tileBox46;
+	@FXML
+	HBox tileBox47;
+	@FXML
+	HBox tileBox48;
+	@FXML
+	HBox tileBox49;	
+	@FXML
+	Pane rootPane;
+	@FXML
+	Label message;
 	@FXML
 	VBox startBox;
 	@FXML
@@ -256,7 +360,7 @@ public class GameController extends Circle implements Initializable{
 	private Image yellow6 = new Image(getClass().getResourceAsStream("/resource/yellow_6.jpg"));
 	private Image yellow7 = new Image(getClass().getResourceAsStream("/resource/yellow_7.jpg"));
 	private Image water = new Image(getClass().getResourceAsStream("/resource/bg_popup.png"));
-
+	
 	private Image moveCardBlue = new Image(getClass().getResourceAsStream("/resource/card_Blue.jpg"));
 	private Image moveCardBrown = new Image(getClass().getResourceAsStream("/resource/card_Brown.jpg"));
 	private Image moveCardGreen = new Image(getClass().getResourceAsStream("/resource/card_Green.jpg"));
@@ -271,8 +375,8 @@ public class GameController extends Circle implements Initializable{
 	//Instanzvariablen ArrayListe welche alle Tile Objekte beinhaltet
 	//und ImageView Array welche alle ImageView mit ID beinhaltet
 
-	private ArrayList<Tile> startBoard;
-	private ImageView[] tileImages;
+	private static ArrayList<Tile> startBoard;
+	private static ImageView[] tileImages;
 	public static ArrayList<ImageView> moveImages;
 	private static ArrayList<Card> cards;
 	private static ArrayList<Card> playerCards;
@@ -282,6 +386,10 @@ public class GameController extends Circle implements Initializable{
 	private static Color[] avatarColors = new Color[4];
 	private static ArrayList<Player> players = new ArrayList<Player>(); 
 	private static ArrayList<Circle> avatars;
+	private static Card selectetCard;
+	private static Circle selectetAvatar;
+	private static ArrayList<HBox> tileBox;
+	private static ArrayList<Tile> proformaStartGameBoard;
 
 
 
@@ -294,6 +402,8 @@ public class GameController extends Circle implements Initializable{
 	//somit haben wir ein visuelles GameBoard
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+
 
 		//Label mit folgende Eigenschaften zur StackPane hinzufügen
 		numOfDeck.setFont(Font.font("System", FontWeight.BOLD, 40));
@@ -402,6 +512,12 @@ public class GameController extends Circle implements Initializable{
 				});
 			}
 		}
+
+		message.setLayoutX(800);
+		message.setLayoutY(650);
+		message.setVisible(false);
+
+
 	}	
 
 	// ---------------------------------------------------------- bis hier
@@ -462,6 +578,57 @@ public class GameController extends Circle implements Initializable{
 		tileImages[46] = tile47;
 		tileImages[47] = tile48;
 		tileImages[48] = tile49;
+		
+		tileBox = new ArrayList<HBox>();
+			tileBox.add(tileBox1);
+			tileBox.add(tileBox2);
+			tileBox.add(tileBox3);
+			tileBox.add(tileBox4);
+			tileBox.add(tileBox5);
+			tileBox.add(tileBox6);
+			tileBox.add(tileBox7);
+			tileBox.add(tileBox8);
+			tileBox.add(tileBox9);
+			tileBox.add(tileBox10);
+			tileBox.add(tileBox11);
+			tileBox.add(tileBox12);
+			tileBox.add(tileBox13);
+			tileBox.add(tileBox14);
+			tileBox.add(tileBox15);
+			tileBox.add(tileBox16);
+			tileBox.add(tileBox17);
+			tileBox.add(tileBox18);
+			tileBox.add(tileBox19);
+			tileBox.add(tileBox20);
+			tileBox.add(tileBox21);
+			tileBox.add(tileBox22);
+			tileBox.add(tileBox23);
+			tileBox.add(tileBox24);
+			tileBox.add(tileBox25);
+			tileBox.add(tileBox26);
+			tileBox.add(tileBox27);
+			tileBox.add(tileBox28);
+			tileBox.add(tileBox29);
+			tileBox.add(tileBox30);
+			tileBox.add(tileBox31);
+			tileBox.add(tileBox32);
+			tileBox.add(tileBox33);
+			tileBox.add(tileBox34);
+			tileBox.add(tileBox35);
+			tileBox.add(tileBox36);
+			tileBox.add(tileBox37);
+			tileBox.add(tileBox38);
+			tileBox.add(tileBox39);
+			tileBox.add(tileBox40);
+			tileBox.add(tileBox41);
+			tileBox.add(tileBox42);
+			tileBox.add(tileBox43);
+			tileBox.add(tileBox44);
+			tileBox.add(tileBox45);
+			tileBox.add(tileBox46);
+			tileBox.add(tileBox47);
+			tileBox.add(tileBox48);
+			tileBox.add(tileBox49);
 
 
 	}	
@@ -498,6 +665,7 @@ public class GameController extends Circle implements Initializable{
 	public ArrayList<Tile> setTiles(){
 
 		ArrayList<Tile> startGameBoard = new ArrayList<Tile>();
+		proformaStartGameBoard = new ArrayList<Tile>();
 
 		Tile Blue1 = new Tile(blue1, 1, "blue");
 		Tile Blue2 = new Tile(blue2, 2, "blue");
@@ -548,8 +716,9 @@ public class GameController extends Circle implements Initializable{
 		Tile Yellow5 = new Tile(yellow5, 5, "yellow");
 		Tile Yellow6 = new Tile(yellow6, 6, "yellow");
 		Tile Yellow7 = new Tile(yellow7, 7, "yellow");
+		Tile Water = new Tile(water, 0, "water");
 
-
+		proformaStartGameBoard.add(Water);
 
 		startGameBoard.add(Blue1);
 		startGameBoard.add(Blue2);
@@ -623,49 +792,83 @@ public class GameController extends Circle implements Initializable{
 	//wird ausgelöst wenn der Spieler sein Avatar auf eine entsprechendes Tile setzen will
 	//die Methode ersetzt das vorherige Tile mit "Wasser" und gibt die Punktzahlt des Tiles zurück
 	//um die Punktzahl danach dem Score vom Spieler zu summieren
-	public void collectTile(MouseEvent event){
+	public static void collectTile(Tile selectetTile, int position){
+		Image water = proformaStartGameBoard.get(0).getImage();
+		Tile Water = new Tile (water, 0, "water");
+		
 		int points;
-		int countPosition = 2;
-
-		String selectetTile = handleTile(event);
-
-		String subString = selectetTile.substring(4);
-		int tilePosition = Integer.parseInt(subString);
-
-
-		Tile selectTile = startBoard.get(tilePosition-countPosition);
-		points = selectTile.getPoints();
+		int countPosition = 1;
+		
+		Tile collectTile = startBoard.get(position-countPosition);
+		points = collectTile.getPoints();
 
 		if(points > 0){
 			//addToScore Methode muss hier geschrieben werden um die Punktzahl aufs Konto vom Spieler zu übertragen
 
-			startBoard.set(tilePosition-countPosition, Water);
-			tileImages[tilePosition-countPosition].setImage(startBoard.get(tilePosition-countPosition).getImage());
+			startBoard.set(position-countPosition, Water);
+			tileImages[position-countPosition].setImage(startBoard.get(position-countPosition).getImage());
 		}else{
 			do{
 				countPosition++;
-				Tile selectTile1 = startBoard.get(tilePosition-countPosition);
+				Tile selectTile1 = startBoard.get(position-countPosition);
 				points = selectTile1.getPoints();
 			}while(points == 0);
-			startBoard.set(tilePosition-countPosition, Water);
-			tileImages[tilePosition-countPosition].setImage(startBoard.get(tilePosition-countPosition).getImage());
+			startBoard.set(position-countPosition, Water);
+			tileImages[position-countPosition].setImage(startBoard.get(position-countPosition).getImage());
 		}
 
 
 		System.out.println(points);
-		System.out.println(selectetTile);
+		System.out.println(selectetTile.getColor());
 
 	}
-
-	//gibt die ID des geklickten Tiles zurück
-	//damit wir das Tile identifizieren können
-	public String handleTile(MouseEvent event){
-
-		ImageView tile = (ImageView) event.getSource(); ;
-		String selectetTileId = tile.getId();
-
-		return selectetTileId;
-	}
+	
+//	//wird ausgelöst wenn der Spieler sein Avatar auf eine entsprechendes Tile setzen will
+//		//die Methode ersetzt das vorherige Tile mit "Wasser" und gibt die Punktzahlt des Tiles zurück
+//		//um die Punktzahl danach dem Score vom Spieler zu summieren
+//		public void collectTile(MouseEvent event){
+//			int points;
+//			int countPosition = 2;
+//
+//			String selectetTile = handleTile(event);
+//
+//			String subString = selectetTile.substring(4);
+//			int tilePosition = Integer.parseInt(subString);
+//
+//
+//			Tile selectTile = startBoard.get(tilePosition-countPosition);
+//			points = selectTile.getPoints();
+//
+//			if(points > 0){
+//				//addToScore Methode muss hier geschrieben werden um die Punktzahl aufs Konto vom Spieler zu übertragen
+//
+//				startBoard.set(tilePosition-countPosition, Water);
+//				tileImages[tilePosition-countPosition].setImage(startBoard.get(tilePosition-countPosition).getImage());
+//			}else{
+//				do{
+//					countPosition++;
+//					Tile selectTile1 = startBoard.get(tilePosition-countPosition);
+//					points = selectTile1.getPoints();
+//				}while(points == 0);
+//				startBoard.set(tilePosition-countPosition, Water);
+//				tileImages[tilePosition-countPosition].setImage(startBoard.get(tilePosition-countPosition).getImage());
+//			}
+//
+//
+//			System.out.println(points);
+//			System.out.println(selectetTile);
+//
+//		}
+//
+//		//gibt die ID des geklickten Tiles zurück
+//		//damit wir das Tile identifizieren können
+//		public String handleTile(MouseEvent event){
+//
+//			ImageView tile = (ImageView) event.getSource();
+//			String selectetTileId = tile.getId();
+//
+//			return selectetTileId;
+//		}
 
 
 
@@ -827,21 +1030,18 @@ public class GameController extends Circle implements Initializable{
 		ImageView moveCard = (ImageView) event.getSource();
 		HBox currentMoveCardBox = (HBox) moveCard.getParent();
 		String idCurrentMoveCardBox = currentMoveCardBox.getId();
+		String moveCardId = moveCard.getId();
 		int positionCurrentMoveCardBox = Integer.parseInt(idCurrentMoveCardBox.substring(12));
 		HBox secondMoveCardBox;
 		ArrayList<HBox> boxList = new ArrayList<HBox>();
-		
+
 		for(int i = 0; i < 2; i++){
-		boxList.add((HBox) currentMoveCardBox.getParent().getChildrenUnmodifiable().get(i));
+			boxList.add((HBox) currentMoveCardBox.getParent().getChildrenUnmodifiable().get(i));
 		}
-		
+
 		boxList.remove(positionCurrentMoveCardBox);
 		secondMoveCardBox = boxList.get(0);
-//			if(!(currentMoveCardBox.getId().equals(currentMoveCardBox.getParent().getChildrenUnmodifiable().get(positionCurrentMoveCardBox)))){
-//				secondMoveCardBox =(HBox) currentMoveCardBox.getParent().getChildrenUnmodifiable().get(i);
-//			}
-
-
+		
 		InnerShadow iShadow = new InnerShadow();
 		iShadow.setChoke(0.45);
 		iShadow.setColor(Color.web("F7FF00"));
@@ -851,7 +1051,7 @@ public class GameController extends Circle implements Initializable{
 		moveCard.setOnMouseExited(null);
 
 		for(int i = 0; i < currentMoveCardBox.getChildren().size(); i++){
-			if(!(currentMoveCardBox.getChildren().get(i).equals(moveCard) || secondMoveCardBox.getChildren().get(i).equals(moveCard))){
+			if(!(currentMoveCardBox.getChildren().get(i).getId().equals(moveCardId) || secondMoveCardBox.getChildren().get(i).getId().equals(moveCardId))){
 				currentMoveCardBox.getChildren().get(i).setEffect(null);
 				secondMoveCardBox.getChildren().get(i).setEffect(null);
 				currentMoveCardBox.getChildren().get(i).setOnMouseExited(new EventHandler<MouseEvent>(){
@@ -869,25 +1069,11 @@ public class GameController extends Circle implements Initializable{
 			}
 		}
 		moveCard.setEffect(iShadow);
-		System.out.println("dinimuetter");
-
-		//		for(int i = 0; i < moveCard.getParent().getChildrenUnmodifiable().size(); i++){
-		//			if(!(moveCard.getParent().getChildrenUnmodifiable().get(i).equals(moveCard))){
-		//				moveCard.getParent().getChildrenUnmodifiable().get(i).setEffect(null);
-		//				moveCard.getParent().getChildrenUnmodifiable().get(i).setOnMouseExited(new EventHandler<MouseEvent>(){
-		//					@Override
-		//					public void handle(MouseEvent event) {
-		//						handleMouseExit(event);		
-		//					}
-		//				});
-		//			}
-		//		}
-		//		moveCard.setEffect(iShadow);
+		selectetCard = playerCards.get(Integer.parseInt(moveCardId.substring(8))-1);
 	}
 
 	//effekt welcher bei den Tiles ausgelöst wird wenn eine Bewegungskarte ausgewählt wird
 	public static void showPossibleTiles(ArrayList<ImageView> possibleTileArray){
-
 
 		tileShadow = new InnerShadow();
 		tileShadow.setChoke(0.5);
@@ -899,7 +1085,6 @@ public class GameController extends Circle implements Initializable{
 		for(int i = 0 ; i < possibleTileArray.size(); i++){
 			possibleTileArray.get(i).setEffect(tileShadow);
 		}
-
 	}
 
 	//öffnet das GUI um Karte zu kaufen
@@ -916,6 +1101,31 @@ public class GameController extends Circle implements Initializable{
 		}
 	}
 
+	public void switchToMoveAvatar(){
+		if(GameController.selectetAvatar == null || GameController.selectetCard == null){
+			message.setText("Bitte Karte und Avatar wählen");
+			message.setTextFill(Color.RED);
+			message.setFont(Font.font(20));
+			message.setVisible(true);
+
+		}else{
+			if(message.isVisible() == true){
+				message.setVisible(false);
+			}
+			try{
+				FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("moveAvatar1.fxml"));
+				Pane rootPane = (Pane) fxmlloader.load();
+				Stage stage = new Stage();
+				stage.setResizable(false);
+				stage.setScene(new Scene(rootPane));
+				stage.show();
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+
+	}
+
 
 	public static void handleSelectetAvatar(MouseEvent event){
 		Circle selectetAvatar = (Circle) event.getSource();
@@ -929,6 +1139,27 @@ public class GameController extends Circle implements Initializable{
 			}
 		}
 		selectetAvatar.setEffect(avatarShadow);
+
+		GameController.selectetAvatar = selectetAvatar;
 	}
 
+	public static Card getSelectetCard(){
+		return GameController.selectetCard;
+	}
+	
+	public static Circle getSelectetAvatar(){
+		return GameController.selectetAvatar;
+	}
+	
+	public static ArrayList<Tile> getStartBoard(){
+		return GameController.startBoard;
+	}
+	
+	public static ImageView[] getTileImages(){
+		return GameController.tileImages;
+	}
+	
+	public static ArrayList<HBox> getTileBox(){
+		return GameController.tileBox;
+	}
 }
