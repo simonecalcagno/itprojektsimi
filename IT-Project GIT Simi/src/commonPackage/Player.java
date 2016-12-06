@@ -155,6 +155,14 @@ public class Player extends Circle {
 	public ArrayList<Circle> getAvatar(){
 		return this.avatars;
 	}
+	
+	public void addToScore(int points){
+		this.score += points;
+	}
+	
+	public void subFromScore(int points){
+		this.score -= points;
+	}
 
 
 	public String toString(){

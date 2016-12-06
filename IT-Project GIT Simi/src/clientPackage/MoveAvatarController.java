@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.sun.prism.paint.Color;
 
 import commonPackage.Card;
+import commonPackage.Player;
 import commonPackage.Tile;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,17 +34,19 @@ public class MoveAvatarController implements Initializable {
 
 	//alle Instanzvariablen welche benötigt werden definieren
 	//so ziemlich alle aus der GameController Klasse welche hier aufgelistet sind
-	private static Circle selectetAvatar;
-	private static Card selectetCard;
-	private static ImageView selectetCardImageView;
-	private static ArrayList<Tile> startBoard;
-	private static ArrayList<HBox> tileBox;
-	private static InnerShadow tileShadow;
-	private static ArrayList<ImageView> possibleTilesArray;
-	private static InnerShadow tileShadowMove;
-	private static ArrayList<ImageView> possibleTilesArrayMove;
-	private static HBox currentAvatarPosition;
-	private static HBox[] ebPlayer;
+	private Circle selectetAvatar;
+	private Card selectetCard;
+	private ImageView selectetCardImageView;
+	private ArrayList<Tile> startBoard;
+	private ArrayList<HBox> tileBox;
+	private InnerShadow tileShadow;
+	private ArrayList<ImageView> possibleTilesArray;
+	private InnerShadow tileShadowMove;
+	private ArrayList<ImageView> possibleTilesArrayMove;
+	private HBox currentAvatarPosition;
+	private HBox[] ebPlayer;
+	private Player currentPlayer;
+	
 
 
 
@@ -63,6 +66,7 @@ public class MoveAvatarController implements Initializable {
 		selectetCardImageView = GameController.getSelectetCardImageView();
 		currentAvatarPosition = GameController.getCurrentAvatarPosition();
 		ebPlayer = GameController.getEbPlayer();
+		currentPlayer = GameController.getCurrentPlayer();
 		int count = 0;
 
 		if(currentAvatarPosition.getId().contains("sb_player")){
@@ -169,6 +173,7 @@ public class MoveAvatarController implements Initializable {
 		GameController.setSelectetAvatar();
 		GameController.setSelectetCard();
 		GameController.setCurrentAvatarPosition();
+		
 
 		Stage stage = (Stage)b_SpielzugAbbruch.getScene().getWindow();
 		stage.close();

@@ -360,7 +360,7 @@ public class GameController extends Circle implements Initializable{
 	private Image yellow6 = new Image(getClass().getResourceAsStream("/resource/yellow_6.jpg"));
 	private Image yellow7 = new Image(getClass().getResourceAsStream("/resource/yellow_7.jpg"));
 	private Image water = new Image(getClass().getResourceAsStream("/resource/bg_popup.png"));
-	
+
 	private Image moveCardBlue = new Image(getClass().getResourceAsStream("/resource/card_Blue.jpg"));
 	private Image moveCardBrown = new Image(getClass().getResourceAsStream("/resource/card_Brown.jpg"));
 	private Image moveCardGreen = new Image(getClass().getResourceAsStream("/resource/card_Green.jpg"));
@@ -394,6 +394,7 @@ public class GameController extends Circle implements Initializable{
 	private static ArrayList<ImageView> possibleTilesArray;
 	private static HBox currentAvatarPosition;
 	private static HBox[] ebPlayer;
+	private static Player currentPlayer;
 
 
 
@@ -464,10 +465,13 @@ public class GameController extends Circle implements Initializable{
 		Player player3 = new Player("hueresohn", "hallo", date);
 		Player player4 = new Player("picka", "hallo", date);
 
+
 		players.add(player1);
 		players.add(player2);
 		players.add(player3);
 		players.add(player4);
+
+		currentPlayer = players.get(0);
 
 		//die HBoxen der verschiedenen Player in einem Array gespeichert
 		HBox[] sbPlayer = new HBox[4];
@@ -475,7 +479,7 @@ public class GameController extends Circle implements Initializable{
 		sbPlayer[1] = sb_player2;
 		sbPlayer[2] = sb_player3;
 		sbPlayer[3] = sb_player4;
-		
+
 		ebPlayer = new HBox[4];
 		ebPlayer[0] = eb_player1;
 		ebPlayer[1] = eb_player2;
@@ -588,57 +592,57 @@ public class GameController extends Circle implements Initializable{
 		tileImages[46] = tile47;
 		tileImages[47] = tile48;
 		tileImages[48] = tile49;
-		
+
 		tileBox = new ArrayList<HBox>();
-			tileBox.add(tileBox1);
-			tileBox.add(tileBox2);
-			tileBox.add(tileBox3);
-			tileBox.add(tileBox4);
-			tileBox.add(tileBox5);
-			tileBox.add(tileBox6);
-			tileBox.add(tileBox7);
-			tileBox.add(tileBox8);
-			tileBox.add(tileBox9);
-			tileBox.add(tileBox10);
-			tileBox.add(tileBox11);
-			tileBox.add(tileBox12);
-			tileBox.add(tileBox13);
-			tileBox.add(tileBox14);
-			tileBox.add(tileBox15);
-			tileBox.add(tileBox16);
-			tileBox.add(tileBox17);
-			tileBox.add(tileBox18);
-			tileBox.add(tileBox19);
-			tileBox.add(tileBox20);
-			tileBox.add(tileBox21);
-			tileBox.add(tileBox22);
-			tileBox.add(tileBox23);
-			tileBox.add(tileBox24);
-			tileBox.add(tileBox25);
-			tileBox.add(tileBox26);
-			tileBox.add(tileBox27);
-			tileBox.add(tileBox28);
-			tileBox.add(tileBox29);
-			tileBox.add(tileBox30);
-			tileBox.add(tileBox31);
-			tileBox.add(tileBox32);
-			tileBox.add(tileBox33);
-			tileBox.add(tileBox34);
-			tileBox.add(tileBox35);
-			tileBox.add(tileBox36);
-			tileBox.add(tileBox37);
-			tileBox.add(tileBox38);
-			tileBox.add(tileBox39);
-			tileBox.add(tileBox40);
-			tileBox.add(tileBox41);
-			tileBox.add(tileBox42);
-			tileBox.add(tileBox43);
-			tileBox.add(tileBox44);
-			tileBox.add(tileBox45);
-			tileBox.add(tileBox46);
-			tileBox.add(tileBox47);
-			tileBox.add(tileBox48);
-			tileBox.add(tileBox49);
+		tileBox.add(tileBox1);
+		tileBox.add(tileBox2);
+		tileBox.add(tileBox3);
+		tileBox.add(tileBox4);
+		tileBox.add(tileBox5);
+		tileBox.add(tileBox6);
+		tileBox.add(tileBox7);
+		tileBox.add(tileBox8);
+		tileBox.add(tileBox9);
+		tileBox.add(tileBox10);
+		tileBox.add(tileBox11);
+		tileBox.add(tileBox12);
+		tileBox.add(tileBox13);
+		tileBox.add(tileBox14);
+		tileBox.add(tileBox15);
+		tileBox.add(tileBox16);
+		tileBox.add(tileBox17);
+		tileBox.add(tileBox18);
+		tileBox.add(tileBox19);
+		tileBox.add(tileBox20);
+		tileBox.add(tileBox21);
+		tileBox.add(tileBox22);
+		tileBox.add(tileBox23);
+		tileBox.add(tileBox24);
+		tileBox.add(tileBox25);
+		tileBox.add(tileBox26);
+		tileBox.add(tileBox27);
+		tileBox.add(tileBox28);
+		tileBox.add(tileBox29);
+		tileBox.add(tileBox30);
+		tileBox.add(tileBox31);
+		tileBox.add(tileBox32);
+		tileBox.add(tileBox33);
+		tileBox.add(tileBox34);
+		tileBox.add(tileBox35);
+		tileBox.add(tileBox36);
+		tileBox.add(tileBox37);
+		tileBox.add(tileBox38);
+		tileBox.add(tileBox39);
+		tileBox.add(tileBox40);
+		tileBox.add(tileBox41);
+		tileBox.add(tileBox42);
+		tileBox.add(tileBox43);
+		tileBox.add(tileBox44);
+		tileBox.add(tileBox45);
+		tileBox.add(tileBox46);
+		tileBox.add(tileBox47);
+		tileBox.add(tileBox48);
+		tileBox.add(tileBox49);
 
 
 	}	
@@ -805,16 +809,15 @@ public class GameController extends Circle implements Initializable{
 	public static void collectTile(Tile selectetTile, int position){
 		Image water = proformaStartGameBoard.get(0).getImage();
 		Tile Water = new Tile (water, 0, "water");
-		
+
 		int points;
 		int countPosition = 1;
-		
+
 		Tile collectTile = startBoard.get(position-countPosition);
 		points = collectTile.getPoints();
 
 		if(points > 0){
-			//addToScore Methode muss hier geschrieben werden um die Punktzahl aufs Konto vom Spieler zu übertragen
-
+			currentPlayer.addToScore(points);
 			startBoard.set(position-countPosition, Water);
 			tileImages[position-countPosition].setImage(startBoard.get(position-countPosition).getImage());
 		}else{
@@ -825,6 +828,7 @@ public class GameController extends Circle implements Initializable{
 				}
 				Tile selectTile1 = startBoard.get(position-countPosition);
 				points = selectTile1.getPoints();
+				currentPlayer.addToScore(points);
 				startBoard.set(position-countPosition, Water);
 				tileImages[position-countPosition].setImage(startBoard.get(position-countPosition).getImage());
 			}while(points == 0);
@@ -835,21 +839,20 @@ public class GameController extends Circle implements Initializable{
 		System.out.println(selectetTile.getColor());
 
 	}
-	
+
 	public static void collectLastTile(){
 		Image water = proformaStartGameBoard.get(0).getImage();
 		Tile Water = new Tile (water, 0, "water");
 		int lastTilePosition = 48;
-		
+
 		int points;
 		int countPosition = 0;
-		
+
 		Tile collectTile = startBoard.get(lastTilePosition);
 		points = collectTile.getPoints();
 
-		if(points > 0){
-			//addToScore Methode muss hier geschrieben werden um die Punktzahl aufs Konto vom Spieler zu übertragen
-
+		if(points > 0){	
+			currentPlayer.addToScore(points);
 			startBoard.set(lastTilePosition, Water);
 			tileImages[lastTilePosition].setImage(startBoard.get(lastTilePosition).getImage());
 		}else{
@@ -857,8 +860,9 @@ public class GameController extends Circle implements Initializable{
 				countPosition++;
 				Tile selectTile1 = startBoard.get(lastTilePosition-countPosition);
 				points = selectTile1.getPoints();
+				currentPlayer.addToScore(points);
 			}while(points == 0);
-			
+
 			startBoard.set(lastTilePosition-countPosition, Water);
 			tileImages[lastTilePosition-countPosition].setImage(startBoard.get(lastTilePosition-countPosition).getImage());
 		}
@@ -1038,7 +1042,7 @@ public class GameController extends Circle implements Initializable{
 
 		boxList.remove(positionCurrentMoveCardBox);
 		secondMoveCardBox = boxList.get(0);
-		
+
 		InnerShadow iShadow = new InnerShadow();
 		iShadow.setChoke(0.45);
 		iShadow.setColor(Color.web("F7FF00"));
@@ -1093,15 +1097,22 @@ public class GameController extends Circle implements Initializable{
 
 	//öffnet das GUI um Karte zu kaufen
 	public void switchToBuyCard(){
-		try{
-			FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("BuyCard.fxml"));
-			Pane rootPane = (Pane) fxmlloader.load();
-			Stage stage = new Stage();
-			stage.setResizable(false);
-			stage.setScene(new Scene(rootPane));
-			stage.show();
-		}catch (Exception e){
-			e.printStackTrace();
+		if(currentPlayer.getScore() < 2){
+			message.setVisible(true);
+			message.setText("Du hast zu wenig Punkte um Karte zu kaufen");
+			message.setTextFill(Color.RED);
+			message.setFont(Font.font(20));
+		}else{
+			try{
+				FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("BuyCard.fxml"));
+				Pane rootPane = (Pane) fxmlloader.load();
+				Stage stage = new Stage();
+				stage.setResizable(false);
+				stage.setScene(new Scene(rootPane));
+				stage.show();
+			}catch (Exception e){
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -1151,51 +1162,59 @@ public class GameController extends Circle implements Initializable{
 	public static Card getSelectetCard(){
 		return GameController.selectetCard;
 	}
-	
+
 	public static Circle getSelectetAvatar(){
 		return GameController.selectetAvatar;
 	}
-	
+
 	public static ArrayList<Tile> getStartBoard(){
 		return GameController.startBoard;
 	}
-	
+
 	public static ImageView[] getTileImages(){
 		return GameController.tileImages;
 	}
-	
+
 	public static ArrayList<HBox> getTileBox(){
 		return GameController.tileBox;
 	}
-	
+
 	public static ImageView getSelectetCardImageView(){
 		return GameController.selectetCardImageView;
 	}
-	
+
 	public static InnerShadow getTileShadow(){
 		return GameController.tileShadow;
 	}
-	
+
 	public static void setSelectetAvatar(){
 		GameController.selectetAvatar = null;
 	}
-	
+
 	public static void setSelectetCard(){
 		GameController.selectetCard = null;
 	}
 	public static ArrayList<ImageView> getPossibleTilesArray(){
 		return GameController.possibleTilesArray;
 	}
-	
+
 	public static HBox getCurrentAvatarPosition(){
 		return GameController.currentAvatarPosition;
 	}
-	
+
 	public static void setCurrentAvatarPosition(){
 		GameController.currentAvatarPosition = null;
 	}
-	
+
 	public static HBox[] getEbPlayer(){
 		return GameController.ebPlayer;
+	}
+
+	public static void setCurrentPlayer(Player currentPlayer){
+		GameController.currentPlayer = currentPlayer; 
+	}
+
+	public static Player getCurrentPlayer(){
+		return GameController.currentPlayer;
 	}
 }
