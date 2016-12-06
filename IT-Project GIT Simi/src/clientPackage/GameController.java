@@ -378,18 +378,22 @@ public class GameController extends Circle implements Initializable{
 	private static ArrayList<Tile> startBoard;
 	private static ImageView[] tileImages;
 	public static ArrayList<ImageView> moveImages;
-	private static ArrayList<Card> cards;
-	private static ArrayList<Card> playerCards;
+	public static ArrayList<Card> cards;
+	public static ArrayList<Card> playerCards;
 	private static InnerShadow tileShadow;
-	private static Label numOfDeck = new Label();
+	public static Label numOfDeck = new Label();
 	Tile Water = new Tile(water, 0, "water");
 	private static Color[] avatarColors = new Color[4];
 	private static ArrayList<Player> players = new ArrayList<Player>(); 
 	private static ArrayList<Circle> avatars;
 	private static Card selectetCard;
+	private static ImageView selectetCardImageView;
 	private static Circle selectetAvatar;
 	private static ArrayList<HBox> tileBox;
 	private static ArrayList<Tile> proformaStartGameBoard;
+	private static ArrayList<ImageView> possibleTilesArray;
+	private static HBox currentAvatarPosition;
+	private static HBox[] ebPlayer;
 
 
 
@@ -471,6 +475,12 @@ public class GameController extends Circle implements Initializable{
 		sbPlayer[1] = sb_player2;
 		sbPlayer[2] = sb_player3;
 		sbPlayer[3] = sb_player4;
+		
+		ebPlayer = new HBox[4];
+		ebPlayer[0] = eb_player1;
+		ebPlayer[1] = eb_player2;
+		ebPlayer[2] = eb_player3;
+		ebPlayer[3] = eb_player4;
 
 
 		//avatar Listen von den Player holen und in eine arrayListe speichern und diese Listen in eine gesamt Liste speichern
@@ -810,11 +820,14 @@ public class GameController extends Circle implements Initializable{
 		}else{
 			do{
 				countPosition++;
+				if(position - countPosition == -1){
+					break;
+				}
 				Tile selectTile1 = startBoard.get(position-countPosition);
 				points = selectTile1.getPoints();
+				startBoard.set(position-countPosition, Water);
+				tileImages[position-countPosition].setImage(startBoard.get(position-countPosition).getImage());
 			}while(points == 0);
-			startBoard.set(position-countPosition, Water);
-			tileImages[position-countPosition].setImage(startBoard.get(position-countPosition).getImage());
 		}
 
 
@@ -823,54 +836,38 @@ public class GameController extends Circle implements Initializable{
 
 	}
 	
-//	//wird ausgelöst wenn der Spieler sein Avatar auf eine entsprechendes Tile setzen will
-//		//die Methode ersetzt das vorherige Tile mit "Wasser" und gibt die Punktzahlt des Tiles zurück
-//		//um die Punktzahl danach dem Score vom Spieler zu summieren
-//		public void collectTile(MouseEvent event){
-//			int points;
-//			int countPosition = 2;
-//
-//			String selectetTile = handleTile(event);
-//
-//			String subString = selectetTile.substring(4);
-//			int tilePosition = Integer.parseInt(subString);
-//
-//
-//			Tile selectTile = startBoard.get(tilePosition-countPosition);
-//			points = selectTile.getPoints();
-//
-//			if(points > 0){
-//				//addToScore Methode muss hier geschrieben werden um die Punktzahl aufs Konto vom Spieler zu übertragen
-//
-//				startBoard.set(tilePosition-countPosition, Water);
-//				tileImages[tilePosition-countPosition].setImage(startBoard.get(tilePosition-countPosition).getImage());
-//			}else{
-//				do{
-//					countPosition++;
-//					Tile selectTile1 = startBoard.get(tilePosition-countPosition);
-//					points = selectTile1.getPoints();
-//				}while(points == 0);
-//				startBoard.set(tilePosition-countPosition, Water);
-//				tileImages[tilePosition-countPosition].setImage(startBoard.get(tilePosition-countPosition).getImage());
-//			}
-//
-//
-//			System.out.println(points);
-//			System.out.println(selectetTile);
-//
-//		}
-//
-//		//gibt die ID des geklickten Tiles zurück
-//		//damit wir das Tile identifizieren können
-//		public String handleTile(MouseEvent event){
-//
-//			ImageView tile = (ImageView) event.getSource();
-//			String selectetTileId = tile.getId();
-//
-//			return selectetTileId;
-//		}
+	public static void collectLastTile(){
+		Image water = proformaStartGameBoard.get(0).getImage();
+		Tile Water = new Tile (water, 0, "water");
+		int lastTilePosition = 48;
+		
+		int points;
+		int countPosition = 0;
+		
+		Tile collectTile = startBoard.get(lastTilePosition);
+		points = collectTile.getPoints();
+
+		if(points > 0){
+			//addToScore Methode muss hier geschrieben werden um die Punktzahl aufs Konto vom Spieler zu übertragen
+
+			startBoard.set(lastTilePosition, Water);
+			tileImages[lastTilePosition].setImage(startBoard.get(lastTilePosition).getImage());
+		}else{
+			do{
+				countPosition++;
+				Tile selectTile1 = startBoard.get(lastTilePosition-countPosition);
+				points = selectTile1.getPoints();
+			}while(points == 0);
+			
+			startBoard.set(lastTilePosition-countPosition, Water);
+			tileImages[lastTilePosition-countPosition].setImage(startBoard.get(lastTilePosition-countPosition).getImage());
+		}
 
 
+		System.out.println(points);
+		System.out.println(collectTile.getColor());
+
+	}
 
 	//gibt eine Liste zurück mit 105 Bewegungskarten jeweils 7 Arten à 15 Karten
 	//die Karten sind nicht zufällig verteilt in der Liste
@@ -980,7 +977,7 @@ public class GameController extends Circle implements Initializable{
 		Card selectMoveCard = playerCards.get(moveCardPosition-1);
 
 		ArrayList<Tile> possibleTiles = new ArrayList<Tile>();
-		ArrayList<ImageView> possibleTilesArray = new ArrayList<ImageView>();
+		ArrayList<ImageView>possibleTilesArray = new ArrayList<ImageView>();
 
 		for(int i = 0; i < startBoard.size(); i++){
 			if(startBoard.get(i).getColor().equals(selectMoveCard.getColor())){
@@ -1070,6 +1067,13 @@ public class GameController extends Circle implements Initializable{
 		}
 		moveCard.setEffect(iShadow);
 		selectetCard = playerCards.get(Integer.parseInt(moveCardId.substring(8))-1);
+		selectetCardImageView = moveCard;
+		possibleTilesArray = new ArrayList<ImageView>();
+		for(int i = 0; i < startBoard.size(); i++){
+			if(startBoard.get(i).getColor().equals(selectetCard.getColor())){
+				possibleTilesArray.add(tileImages[i]);
+			}
+		}
 	}
 
 	//effekt welcher bei den Tiles ausgelöst wird wenn eine Bewegungskarte ausgewählt wird
@@ -1141,6 +1145,7 @@ public class GameController extends Circle implements Initializable{
 		selectetAvatar.setEffect(avatarShadow);
 
 		GameController.selectetAvatar = selectetAvatar;
+		GameController.currentAvatarPosition = (HBox) selectetAvatar.getParent();
 	}
 
 	public static Card getSelectetCard(){
@@ -1161,5 +1166,36 @@ public class GameController extends Circle implements Initializable{
 	
 	public static ArrayList<HBox> getTileBox(){
 		return GameController.tileBox;
+	}
+	
+	public static ImageView getSelectetCardImageView(){
+		return GameController.selectetCardImageView;
+	}
+	
+	public static InnerShadow getTileShadow(){
+		return GameController.tileShadow;
+	}
+	
+	public static void setSelectetAvatar(){
+		GameController.selectetAvatar = null;
+	}
+	
+	public static void setSelectetCard(){
+		GameController.selectetCard = null;
+	}
+	public static ArrayList<ImageView> getPossibleTilesArray(){
+		return GameController.possibleTilesArray;
+	}
+	
+	public static HBox getCurrentAvatarPosition(){
+		return GameController.currentAvatarPosition;
+	}
+	
+	public static void setCurrentAvatarPosition(){
+		GameController.currentAvatarPosition = null;
+	}
+	
+	public static HBox[] getEbPlayer(){
+		return GameController.ebPlayer;
 	}
 }

@@ -293,13 +293,6 @@
             <HBox fx:id="sb_player3" prefHeight="30.0" prefWidth="96.0" />
             <HBox fx:id="sb_player4" prefHeight="30.0" prefWidth="96.0" />
          </children></VBox>
-      <VBox fx:id="endBox" layoutX="957.0" layoutY="225.0" prefHeight="114.0" prefWidth="70.0">
-         <children>
-            <HBox fx:id="eb_player1" prefHeight="30.0" prefWidth="96.0" />
-            <HBox fx:id="eb_player2" prefHeight="30.0" prefWidth="96.0" />
-            <HBox fx:id="eb_player3" prefHeight="30.0" prefWidth="96.0" />
-            <HBox fx:id="eb_player4" prefHeight="30.0" prefWidth="96.0" />
-         </children></VBox>
       <VBox fx:id="vb_playerMoveCard" layoutX="376.0" layoutY="444.0" prefHeight="200.0" prefWidth="100.0">
          <children>
             <HBox fx:id="moveCardsBox0" prefHeight="104.0" prefWidth="350.0" style="-fx-background-color: #8EFFFA;">
@@ -377,5 +370,12 @@
       </ImageView>
       <Button fx:id="b_SpielzugTätigen" layoutX="756.0" layoutY="607.0" mnemonicParsing="false" onAction="#switchToMoveAvatar" text="Spielzug tätigen !" />
       <Label fx:id="message" layoutX="803.0" layoutY="648.0" text="Label" />
+      <VBox fx:id="endBox" layoutX="957.0" layoutY="225.0" prefHeight="114.0" prefWidth="70.0">
+         <children>
+            <HBox fx:id="eb_player1" prefHeight="30.0" prefWidth="96.0" />
+            <HBox fx:id="eb_player2" prefHeight="30.0" prefWidth="96.0" />
+            <HBox fx:id="eb_player3" prefHeight="30.0" prefWidth="96.0" />
+            <HBox fx:id="eb_player4" prefHeight="30.0" prefWidth="96.0" />
+         </children></VBox>
    </children>
 </Pane>
