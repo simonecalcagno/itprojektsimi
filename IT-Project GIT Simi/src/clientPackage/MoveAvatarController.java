@@ -11,12 +11,15 @@ import commonPackage.Player;
 import commonPackage.Tile;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -44,8 +47,10 @@ public class MoveAvatarController implements Initializable {
 	private InnerShadow tileShadowMove;
 	private ArrayList<ImageView> possibleTilesArrayMove;
 	private HBox currentAvatarPosition;
-	private HBox[] ebPlayer;
+	private static HBox[] ebPlayer;
 	private int currentPlayerPosition;
+	private ArrayList<Circle> playersAvatar;
+	private Player currentPlayer;
 	
 
 
@@ -67,6 +72,8 @@ public class MoveAvatarController implements Initializable {
 		currentAvatarPosition = GameController.getCurrentAvatarPosition();
 		ebPlayer = GameController.getEbPlayer();
 		currentPlayerPosition = GameController.getCurrentPlayerPosition();
+		currentPlayer = GameController.getCurrentPlayer();
+		playersAvatar = currentPlayer.getAvatar();
 		int count = 0;
 
 		if(currentAvatarPosition.getId().contains("sb_player")){
@@ -100,6 +107,9 @@ public class MoveAvatarController implements Initializable {
 				ebPlayer[currentPlayerPosition].setVisible(true);
 				ebPlayer[currentPlayerPosition].toFront();
 				GameController.collectLastTile();
+				if(ebPlayer[currentPlayerPosition].getChildren().containsAll(playersAvatar)){
+					switchToResult();
+				}
 			}
 		}
 		
@@ -178,7 +188,6 @@ public class MoveAvatarController implements Initializable {
 		});
 		GameController.setSelectetAvatar();
 		GameController.setSelectetCard();
-		GameController.setCurrentAvatarPosition();
 		
 
 		Stage stage = (Stage)b_SpielzugAbbruch.getScene().getWindow();
@@ -197,6 +206,23 @@ public class MoveAvatarController implements Initializable {
 		tileShadow.setWidth(0);
 		tileShadow.setRadius(0);
 
+	}
+	
+	public void switchToResult(){
+		try{
+			FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Result.fxml"));
+			Pane rootPane = (Pane) fxmlloader.load();
+			Stage stage = new Stage();
+			stage.setResizable(false);
+			stage.setScene(new Scene(rootPane));
+			stage.show();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static HBox[] getEbPlayer(){
+		return ebPlayer;
 	}
 
 }

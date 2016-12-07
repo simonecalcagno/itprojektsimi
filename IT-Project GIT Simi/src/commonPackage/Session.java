@@ -1,5 +1,7 @@
 package commonPackage;
 
+import java.util.ArrayList;
+
 import clientPackage.TableDataSet;
 
 import commonPackage.Player;
@@ -8,12 +10,12 @@ public class Session {
 
 
 	private int numOfPlayers;
-	private Player[] players;
+	private ArrayList<Player> players;
 	private String sessionName;
 
 
 	
-	public Session(String sessionName, int numOfPlayers, Player[] players){
+	public Session(String sessionName, int numOfPlayers, ArrayList<Player> players){
 		this.sessionName = sessionName;
 		this.numOfPlayers = numOfPlayers;
 		this.players =players;
@@ -45,7 +47,7 @@ public class Session {
 		this.players = players;
 	}
 	
-	public Player [] getPlayers(){
+	public ArrayList<Player> getPlayers(){
 		return this.players;
 	}
 

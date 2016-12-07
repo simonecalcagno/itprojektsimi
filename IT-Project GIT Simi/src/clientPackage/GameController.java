@@ -798,13 +798,6 @@ public class GameController extends Circle implements Initializable{
 	}	
 
 
-
-	// Button erst bei Spiel Ende enable um zurÃ¼ck zur Lobby zu gelangen
-	public void backToLobby(){
-
-	}
-
-
 	//wird ausgelöst wenn der Spieler sein Avatar auf eine entsprechendes Tile setzen will
 	//die Methode ersetzt das vorherige Tile mit "Wasser" und gibt die Punktzahlt des Tiles zurück
 	//um die Punktzahl danach dem Score vom Spieler zu summieren
@@ -1249,4 +1242,5 @@ public class GameController extends Circle implements Initializable{
 	public static int getCurrentPlayerPosition(){
 		return GameController.currentPlayerPosition;
 	}
+
 }
