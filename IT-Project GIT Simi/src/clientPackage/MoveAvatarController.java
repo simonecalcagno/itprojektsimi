@@ -45,7 +45,7 @@ public class MoveAvatarController implements Initializable {
 	private ArrayList<ImageView> possibleTilesArrayMove;
 	private HBox currentAvatarPosition;
 	private HBox[] ebPlayer;
-	private Player currentPlayer;
+	private int currentPlayerPosition;
 	
 
 
@@ -66,7 +66,7 @@ public class MoveAvatarController implements Initializable {
 		selectetCardImageView = GameController.getSelectetCardImageView();
 		currentAvatarPosition = GameController.getCurrentAvatarPosition();
 		ebPlayer = GameController.getEbPlayer();
-		currentPlayer = GameController.getCurrentPlayer();
+		currentPlayerPosition = GameController.getCurrentPlayerPosition();
 		int count = 0;
 
 		if(currentAvatarPosition.getId().contains("sb_player")){
@@ -96,9 +96,9 @@ public class MoveAvatarController implements Initializable {
 				count = i;
 			}
 			if(count == 48){
-				ebPlayer[0].getChildren().add(selectetAvatar);
-				ebPlayer[0].setVisible(true);
-				ebPlayer[0].toFront();
+				ebPlayer[currentPlayerPosition].getChildren().add(selectetAvatar);
+				ebPlayer[currentPlayerPosition].setVisible(true);
+				ebPlayer[currentPlayerPosition].toFront();
 				GameController.collectLastTile();
 			}
 		}
@@ -138,8 +138,14 @@ public class MoveAvatarController implements Initializable {
 		//und selectetCard auf null gesetzt werden
 		//somit haben wir eine Sicherheit bei der Abfrage ob wir einen Spielzug
 		//tätigen können
+	
+		
 		GameController.setSelectetAvatar();
 		GameController.setSelectetCard();
+		//wird in der Methode finishTurn() ausgeführt hier nur zu testzwecken
+		GameController.setCurrentPlayerPosition();
+		GameController.setCurrentPlayer();
+		
 		
 		Stage stage = (Stage)b_SpielzugBestätigen.getScene().getWindow();
 		stage.close();

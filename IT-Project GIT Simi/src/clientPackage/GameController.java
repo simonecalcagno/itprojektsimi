@@ -395,6 +395,7 @@ public class GameController extends Circle implements Initializable{
 	private static HBox currentAvatarPosition;
 	private static HBox[] ebPlayer;
 	private static Player currentPlayer;
+	private static int currentPlayerPosition = 0;
 
 
 
@@ -470,6 +471,7 @@ public class GameController extends Circle implements Initializable{
 		players.add(player2);
 		players.add(player3);
 		players.add(player4);
+
 
 		currentPlayer = players.get(0);
 
@@ -949,7 +951,6 @@ public class GameController extends Circle implements Initializable{
 		moveImages.add(moveCard8);
 		moveImages.add(moveCard9);
 		moveImages.add(moveCard10);
-
 	}
 
 	//zusätzliche Bewegungskarten anzeigen in der zweiten moveCardBox
@@ -1210,11 +1211,27 @@ public class GameController extends Circle implements Initializable{
 		return GameController.ebPlayer;
 	}
 
-	public static void setCurrentPlayer(Player currentPlayer){
-		GameController.currentPlayer = currentPlayer; 
+	public static ArrayList<Player> getPlayers(){
+		return players;
 	}
 
 	public static Player getCurrentPlayer(){
 		return GameController.currentPlayer;
+	}
+
+	public static void setCurrentPlayer(){
+		GameController.currentPlayer = players.get(currentPlayerPosition);
+	}
+
+	public static void setCurrentPlayerPosition(){
+		if(currentPlayerPosition == 3){
+			currentPlayerPosition = 0;
+		}else{
+			currentPlayerPosition++;
+		}
+	}
+	
+	public static int getCurrentPlayerPosition(){
+		return GameController.currentPlayerPosition;
 	}
 }
