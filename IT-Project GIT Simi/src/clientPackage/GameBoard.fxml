@@ -43,7 +43,7 @@
     <HBox fx:id="tileBox29" layoutX="536.0" layoutY="152.0" prefHeight="70.0" prefWidth="70.0" />
     <HBox fx:id="tileBox30" layoutX="536.0" layoutY="84.0" prefHeight="70.0" prefWidth="70.0" />
     <HBox fx:id="tileBox31" layoutX="536.0" layoutY="14.0" prefHeight="70.0" prefWidth="70.0" />
-    <HBox fx:id="tileBox32" layoutX="116.0" layoutY="14.0" prefHeight="70.0" prefWidth="70.0" />
+    <HBox fx:id="tileBox32" layoutX="607.0" layoutY="14.0" prefHeight="70.0" prefWidth="70.0" />
     <HBox fx:id="tileBox33" layoutX="677.0" layoutY="14.0" prefHeight="70.0" prefWidth="70.0" />
     <HBox fx:id="tileBox34" layoutX="677.0" layoutY="84.0" prefHeight="70.0" prefWidth="70.0" />
     <HBox fx:id="tileBox35" layoutX="677.0" layoutY="152.0" prefHeight="70.0" prefWidth="70.0" />

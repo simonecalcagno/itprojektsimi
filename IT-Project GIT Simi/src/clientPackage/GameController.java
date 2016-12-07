@@ -1028,6 +1028,12 @@ public class GameController extends Circle implements Initializable{
 
 	}
 
+	//methode welche ausgeführt wird bei einem Click auf der Bewegungskarte
+	//der Effekt "Highlight" bleibt auf der geklickten Karte mouseExit wird auf null gesetzt
+	//das heisst der Effekt bei den dazugehörigen Tiles bleibt,
+	//auf den anderen Karten bleibt der mousExit effekt
+	//natürlich wenn zwei gleiche Bewegungskarte in der Hand sind, und der Player bei der 
+	//nicht gewählten Karten drüber fährt wird der mouseExit Effekt ausgelöst somit auch bei den Tiles
 	public void moveCardClicked(MouseEvent event){
 		ImageView moveCard = (ImageView) event.getSource();
 		HBox currentMoveCardBox = (HBox) moveCard.getParent();
@@ -1117,6 +1123,8 @@ public class GameController extends Circle implements Initializable{
 		}
 	}
 
+	// öffnet das GUI um den Move zu bestätigen oder zu canceln
+	//vorher wird geprüft ob ein Avatar und eine Karte gewählte wurde
 	public void switchToMoveAvatar(){
 		if(GameController.selectetAvatar == null || GameController.selectetCard == null){
 			message.setText("Bitte Karte und Avatar wählen");
@@ -1142,7 +1150,10 @@ public class GameController extends Circle implements Initializable{
 
 	}
 
-
+	//setzt den Effekt beim Avatar
+	//in der Start Box kann jeweils nur ein Avatar gewählt werden
+	//der Effekt wird nur bei einem gesetzt
+	//Um währen dem Spiel nur ein Avatar zu wählen muss noch ein Code geschrieben werden
 	public static void handleSelectetAvatar(MouseEvent event){
 		Circle selectetAvatar = (Circle) event.getSource();
 		InnerShadow avatarShadow = new InnerShadow();
@@ -1223,8 +1234,12 @@ public class GameController extends Circle implements Initializable{
 		GameController.currentPlayer = players.get(currentPlayerPosition);
 	}
 
+	//wird ausgeführt momentan beim MoveAvatar
+	//sollte aber beim Spielzug beenden ausgeführt werden
+	//damit der currentPlayer nach Spielzug auf den nächsten Player in der Liste
+	//gesetzt wird
 	public static void setCurrentPlayerPosition(){
-		if(currentPlayerPosition == 3){
+		if(currentPlayerPosition == players.size()-1){
 			currentPlayerPosition = 0;
 		}else{
 			currentPlayerPosition++;
