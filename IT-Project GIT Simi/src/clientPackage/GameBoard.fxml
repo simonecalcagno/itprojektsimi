@@ -283,7 +283,7 @@
                </image>
             </ImageView>
          </children></StackPane>
-      <Button fx:id="finishButton" layoutX="942.0" layoutY="547.0" mnemonicParsing="false" onAction="#finishTurn" prefHeight="38.0" prefWidth="170.0" text="Spielzug beenden" />
+      <Button fx:id="finishButton" layoutX="942.0" layoutY="578.0" mnemonicParsing="false" onAction="#finishTurn" prefHeight="38.0" prefWidth="170.0" text="Spielzug beenden" />
       <Button fx:id="b_BuyCard" layoutX="769.0" layoutY="572.0" mnemonicParsing="false" onAction="#switchToBuyCard" text="Karte kaufen" />
       <VBox fx:id="startBox" layoutX="116.0" layoutY="44.0" prefHeight="120.0" prefWidth="70.0">
          <children>
@@ -356,7 +356,6 @@
             </HBox>
          </children>
       </VBox>
-      <ListView fx:id="scoreTable" layoutX="909.0" layoutY="393.0" prefHeight="142.0" prefWidth="236.0" style="-fx-background-color: yellow;" />
       <ImageView fx:id="land" fitHeight="158.0" fitWidth="200.0" layoutX="901.0" layoutY="190.0">
          <image>
             <Image url="@../resource/land.jpg" />

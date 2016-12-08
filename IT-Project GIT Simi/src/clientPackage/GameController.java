@@ -22,6 +22,9 @@ import commonPackage.Card;
 import commonPackage.Player;
 import commonPackage.Tile;
 import javafx.application.Application;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -31,6 +34,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -174,9 +178,7 @@ public class GameController extends Circle implements Initializable{
 	@FXML
 	ImageView land;
 	@FXML
-	Button finishButton;	
-	@FXML
-	ListView scoreTable;
+	Button finishButton;
 	@FXML
 	StackPane movementCards;	
 	@FXML
@@ -396,6 +398,10 @@ public class GameController extends Circle implements Initializable{
 	private static HBox[] ebPlayer;
 	private static Player currentPlayer;
 	private static int currentPlayerPosition = 0;
+	static TableView<Player> scoreTable;
+	static ObservableList<Player> playersData = FXCollections.observableArrayList();
+	static TableColumn<Player, String> userNameColumn = new TableColumn<Player, String>();
+	static TableColumn<Player, Integer> scoreColumn = new TableColumn<Player, Integer>();
 
 
 
@@ -534,6 +540,27 @@ public class GameController extends Circle implements Initializable{
 		message.setVisible(false);
 
 
+		scoreTable = new TableView<Player>();
+		scoreTable.setLayoutX(913);
+		scoreTable.setLayoutY(361);
+		scoreTable.setPrefHeight(200);
+		scoreTable.setPrefWidth(228);
+		scoreTable.toFront();
+		rootPane.getChildren().add(scoreTable);
+		
+		for(Player p : players){
+			playersData.add(p);
+		}
+		
+		userNameColumn.setText("SpielerName");
+		scoreColumn.setText("Score");
+		userNameColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("userName"));
+		scoreColumn.setCellValueFactory(new PropertyValueFactory<Player, Integer>("score"));
+		
+		scoreTable.setItems(playersData);
+		scoreTable.getColumns().clear();
+		scoreTable.getColumns().addAll(userNameColumn, scoreColumn);
+		
 	}	
 
 	// ---------------------------------------------------------- bis hier
@@ -828,7 +855,16 @@ public class GameController extends Circle implements Initializable{
 				tileImages[position-countPosition].setImage(startBoard.get(position-countPosition).getImage());
 			}while(points == 0);
 		}
-
+		
+		scoreTable.getColumns().clear();
+		userNameColumn.setText("SpielerName");
+		scoreColumn.setText("Score");
+		userNameColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("userName"));
+		scoreColumn.setCellValueFactory(new PropertyValueFactory<Player, Integer>("score"));
+		
+		scoreTable.setItems(playersData);
+		scoreTable.getColumns().addAll(userNameColumn, scoreColumn);
+		
 
 		System.out.println(points);
 		System.out.println(selectetTile.getColor());
@@ -862,6 +898,14 @@ public class GameController extends Circle implements Initializable{
 			tileImages[lastTilePosition-countPosition].setImage(startBoard.get(lastTilePosition-countPosition).getImage());
 		}
 
+		scoreTable.getColumns().clear();
+		userNameColumn.setText("SpielerName");
+		scoreColumn.setText("Score");
+		userNameColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("userName"));
+		scoreColumn.setCellValueFactory(new PropertyValueFactory<Player, Integer>("score"));
+		
+		scoreTable.setItems(playersData);
+		scoreTable.getColumns().addAll(userNameColumn, scoreColumn);
 
 		System.out.println(points);
 		System.out.println(collectTile.getColor());
@@ -1139,6 +1183,16 @@ public class GameController extends Circle implements Initializable{
 			}catch (Exception e){
 				e.printStackTrace();
 			}
+
+			//			playersList.clear();
+			//			tc_Player.setCellValueFactory(new PropertyValueFactory<Player, String>("userName"));
+			//			tc_Score.setCellValueFactory(new PropertyValueFactory<Player, Integer>("score"));
+			//
+			//			for(Player p : players){
+			//				playersList.add(p);
+			//			}
+			//
+			//			scoreTable.setItems(playersList);
 		}
 
 	}
@@ -1238,9 +1292,14 @@ public class GameController extends Circle implements Initializable{
 			currentPlayerPosition++;
 		}
 	}
-	
+
 	public static int getCurrentPlayerPosition(){
 		return GameController.currentPlayerPosition;
 	}
+	
+	public ObservableList<Player> getPlayersData(){
+		return playersData;
+	}
+
 
 }

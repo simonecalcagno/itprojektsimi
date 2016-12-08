@@ -13,6 +13,10 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -59,7 +63,8 @@ public class Player extends Circle {
 	public String getUserName(){
 		return this.userName;
 	}
-
+	
+	
 	public Date getDateOfBirth(){
 		return this.dateOfBirth;
 	}
@@ -161,7 +166,7 @@ public class Player extends Circle {
 	}
 	
 	public void subFromScore(int points){
-		this.score -= points;
+		this.score -=points;
 	}
 
 

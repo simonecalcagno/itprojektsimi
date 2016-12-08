@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import commonPackage.Player;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -55,7 +56,15 @@ public class BuyCardController implements Initializable {
 				GameController.addMoveImage(count);
 				count++;
 			}
-
+			
+			GameController.scoreTable.getColumns().clear();
+			GameController.userNameColumn.setText("SpielerName");
+			GameController.scoreColumn.setText("Score");
+			GameController.userNameColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("userName"));
+			GameController.scoreColumn.setCellValueFactory(new PropertyValueFactory<Player, Integer>("score"));
+			
+			GameController.scoreTable.setItems(GameController.playersData);
+			GameController.scoreTable.getColumns().addAll(GameController.userNameColumn, GameController.scoreColumn);
 
 			//Fenster sobald die Karten gekauft wurden schliessen
 			Stage stage = (Stage)b_Buy.getScene().getWindow();

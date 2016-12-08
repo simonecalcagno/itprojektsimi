@@ -9,12 +9,14 @@ import com.sun.prism.paint.Color;
 import commonPackage.Card;
 import commonPackage.Player;
 import commonPackage.Tile;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -143,7 +145,8 @@ public class MoveAvatarController implements Initializable {
 		
 		GameController.numOfDeck.setText(String.valueOf(GameController.cards.size()));
 		
-
+		
+		
 		//damit wir weitere aktionen durchführen können, müssen die selectetAvatar
 		//und selectetCard auf null gesetzt werden
 		//somit haben wir eine Sicherheit bei der Abfrage ob wir einen Spielzug
