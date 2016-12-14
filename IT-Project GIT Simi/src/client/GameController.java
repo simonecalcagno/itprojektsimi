@@ -401,6 +401,7 @@ public class GameController extends SCircle implements Initializable{
 	static TableColumn<Player, SCircle> avatarColorColumn = new TableColumn<Player, SCircle>();
 	private static Label message;
 	private static ArrayList<ImageView> playerCardsNotVisible = new ArrayList<ImageView>();
+	static ArrayList<Card> playerCards = new ArrayList<Card>();
 
 
 
@@ -414,10 +415,6 @@ public class GameController extends SCircle implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-
-		for(Player player : Game.getPlayers()){
-			players.add(player);
-		}
 
 
 		//Label mit folgende Eigenschaften zur StackPane hinzufügen
@@ -440,18 +437,17 @@ public class GameController extends SCircle implements Initializable{
 		//proforma, playerCards muss beim Player Objekt instanziert werden
 		//hier nur zu test Zwecken
 
-		for(int x = 0; x < players.size(); x++){
-			for(int i = 0; i < 5; i++){
-				players.get(x).playerCards.add(cards.get(0));
-				cards.remove(0);
-			}
+
+		for(int i = 0; i < 5; i++){
+			playerCards.add(cards.get(0));
+			cards.remove(0);
 		}
 
 		initMoveCardArray();
 		int countMoveCard = 0;
 
-		for(int i = 0; i < currentPlayer.playerCards.size(); i++){
-			moveImages.get(countMoveCard).setImage(currentPlayer.playerCards.get(i).getImage());
+		for(int i = 0; i < playerCards.size(); i++){
+			moveImages.get(countMoveCard).setImage(playerCards.get(i).getImage());
 			countMoveCard++;
 		}
 
@@ -469,17 +465,17 @@ public class GameController extends SCircle implements Initializable{
 		avatarColors[3] = Color.ORANGE;
 
 		//proforma 4 Spieler instanziert und diese zur ArrayListe des Spiels hinzugefügt
-//		Date date = new Date(1992, 12, 26);
-//		Player player1 = new Player("muetter", "hallo", date, "muetter");
-//		Player player2 = new Player("nanen", "hallo", date, "muetter");
-//		Player player3 = new Player("hueresohn", "hallo", date, "muetter");
-//		Player player4 = new Player("picka", "hallo", date, "muetter");
-//
-//
-//		players.add(player1);
-//		players.add(player2);
-//		players.add(player3);
-//		players.add(player4);
+		Date date = new Date(1992, 12, 26);
+		Player player1 = new Player("muetter", "hallo", date, "muetter");
+		Player player2 = new Player("nanen", "hallo", date, "muetter");
+		Player player3 = new Player("hueresohn", "hallo", date, "muetter");
+		Player player4 = new Player("picka", "hallo", date, "muetter");
+
+
+		players.add(player1);
+		players.add(player2);
+		players.add(player3);
+		players.add(player4);
 
 
 		currentPlayer = players.get(0);
@@ -1110,7 +1106,7 @@ public class GameController extends SCircle implements Initializable{
 		String subString = selectetMoveCard.substring(8);
 		int moveCardPosition = Integer.parseInt(subString);
 
-		Card selectMoveCard = currentPlayer.playerCards.get(moveCardPosition-1);
+		Card selectMoveCard = playerCards.get(moveCardPosition-1);
 
 		ArrayList<Tile> possibleTiles = new ArrayList<Tile>();
 		ArrayList<ImageView>possibleTilesArray = new ArrayList<ImageView>();
@@ -1203,7 +1199,7 @@ public class GameController extends SCircle implements Initializable{
 			}
 		}
 		moveCard.setEffect(iShadow);
-		selectetCard = currentPlayer.playerCards.get(Integer.parseInt(moveCardId.substring(8))-1);
+		selectetCard = playerCards.get(Integer.parseInt(moveCardId.substring(8))-1);
 		selectetCardImageView = moveCard;
 		possibleTilesArray = new ArrayList<ImageView>();
 		for(int i = 0; i < startBoard.size(); i++){

@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 public class MoveAvatarController implements Initializable {
 
 	@FXML
-	Button b_SpielzugBest√§tigen;
+	Button b_SpielzugBest‰tigen;
 	@FXML
 	Button b_SpielzugAbbruch;
 
@@ -166,7 +166,7 @@ public class MoveAvatarController implements Initializable {
 
 		//gespielte Bewegungskarte vom Player Array l√∂schen und eine neue Karte aus dem Deck ziehen
 		//die neue Karte wird an der Position der gespielten Karte gesetzt
-		GameController.currentPlayer.playerCards.set(Integer.parseInt(selectetCardImageView.getId().substring(8))-1, GameController.cards.get(0));
+		GameController.playerCards.set(Integer.parseInt(selectetCardImageView.getId().substring(8))-1, GameController.cards.get(0));
 		GameController.moveImages.get(Integer.parseInt(selectetCardImageView.getId().substring(8))-1).setImage(GameController.cards.get(0).getImage());
 		GameController.cards.remove(0);
 
@@ -184,7 +184,7 @@ public class MoveAvatarController implements Initializable {
 		GameController.setSelectetCard();
 
 
-		Stage stage = (Stage)b_SpielzugBest√§tigen.getScene().getWindow();
+		Stage stage = (Stage)b_SpielzugBest‰tigen.getScene().getWindow();
 		stage.close();
 	}
 
