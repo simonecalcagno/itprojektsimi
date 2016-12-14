@@ -10,12 +10,12 @@
 
 <Pane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.RegistrationController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="600.0">
+      <ImageView fitHeight="500.0" fitWidth="600.0" layoutY="7.0">
          <image>
             <Image url="@Registration_Bild.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="text_Registration" layoutX="194.0" layoutY="25.0" text="Registration" textFill="#e44317">
+      <Label fx:id="text_Registration" layoutX="194.0" layoutY="25.0" text="Registrierung" textFill="#e44317">
          <font>
             <Font name="Baskerville Bold" size="36.0" />
          </font>
@@ -148,6 +148,6 @@
             <SepiaTone />
          </effect>
       </Button>
-      <Label fx:id="text_Fehlermeldung" layoutX="254.0" layoutY="102.0" prefHeight="45.0" prefWidth="0.0" textFill="#e44317" />
+      <Label fx:id="text_Fehlermeldung" layoutX="193.0" layoutY="102.0" prefHeight="45.0" prefWidth="258.0" textFill="#e44317" />
    </children>
 </Pane>

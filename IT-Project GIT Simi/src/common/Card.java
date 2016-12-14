@@ -1,17 +1,13 @@
-package commonPackage;
+package common;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
 import javafx.scene.image.Image;
 
-public class Card{
+public class Card implements Serializable{
 	
 	private String color;
 	private Image img;
-	
-	
-	
-	
 	
 	public Card(String color, Image img){
 		this.color = color;
@@ -29,6 +25,5 @@ public class Card{
 	public String toString(){
 		System.out.println(color);
 		return this.color;
-	}
-		
+	}	
 }

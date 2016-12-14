@@ -1,16 +1,21 @@
-package clientPackage;
+package client;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import commonPackage.Player;
+import common.Player;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 public class ResultController implements Initializable {
 
@@ -46,21 +51,30 @@ public class ResultController implements Initializable {
 
 			}
 		}
-
-		l_winner.setText(winner.getUserName() +" ist der Sieger mit\n"+ winner.getScore()+" Punkte\nGlückwunsch Brate!");
+		
+		l_winner.setText(winner.getUserName() +" ist der Sieger mit\n"+ winner.getScore()+" Punkte\nGlÃ¼ckwunsch Brate!");
 		l_winner.setTextFill(Color.RED);
-		l_winner.setFont(Font.font(25));
-
-		System.out.println(players.get(0).getUserName()+" "+players.get(0).getScore());
-		System.out.println(players.get(1).getUserName()+" "+players.get(1).getScore());
-		System.out.println(players.get(2).getUserName()+" "+players.get(2).getScore());
-		System.out.println(players.get(3).getUserName()+" "+players.get(3).getScore());
+		l_winner.setFont(Font.font("Verdana", FontWeight.BOLD, 25));
 	}
 
-
-
 	public void backToLobby(){
-
+		
+		try{
+			FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Lobby.fxml"));
+			Pane rootPane = (Pane) fxmlloader.load();
+			Stage stage = new Stage();
+			stage.setResizable(false);
+			stage.setScene(new Scene(rootPane));
+			stage.show();
+			
+		
+			Stage result = (Stage)b_BackToLobby.getScene().getWindow();
+			result.close();
+			Stage game = (Stage) GameController.scoreTable.getScene().getWindow();
+			game.close();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 
 	}
 
