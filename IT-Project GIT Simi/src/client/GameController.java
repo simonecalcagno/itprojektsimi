@@ -1076,7 +1076,7 @@ public class GameController extends SCircle implements Initializable{
 		moveImages.get(count).setVisible(true);
 		int countCards = 0;
 
-		currentPlayer.playerCards.add(cards.get(countCards));
+		playerCards.add(cards.get(countCards));
 		moveImages.get(count).setImage(cards.get(countCards).getImage());
 		cards.remove(countCards);
 
